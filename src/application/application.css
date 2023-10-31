@@ -1,0 +1,34 @@
+.button{
+	-fx-background-color:#3282F6;
+}
+
+.head-bar{
+	-fx-background-color:#383838;
+}
+.theme{
+	-fx-background-color:#51B1B3
+	}
+
+.boxes{
+	-fx-background-radius:20;
+}
+.circle{
+	-fx-background-radius: 50;
+}
+
+.navigation{
+	-fx-font-family: Tahoma;
+	-fx-font-size: 16;
+}
+.title{
+	-fx-font-family: Tahoma;
+	-fx-font-size: 24;
+}
+.button{
+	-fx-background-color: #808080;
+	-fx-text-fill: white;
+}
+.button-bright{
+	-fx-background-color: #51B1B3;
+	-fx-text-fill: white;
+}
