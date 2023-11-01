@@ -62,7 +62,7 @@ public class MainUI_Controller {
 	@FXML
 	private void showimportFileDialog() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_import.fxml"));
-		Pane importDialog = loader.load();
+		Parent importDialog = loader.load();
 		Stage subStage = new Stage();
 		subStage.initModality(Modality.APPLICATION_MODAL);
 		subStage.setTitle("Import SKUs");
@@ -105,14 +105,14 @@ public class MainUI_Controller {
 		subStage.setResizable(false);
 		subStage.show();
 		
-		Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
-		cancelBtn.setOnMouseClicked(e -> {
-			subStage.close();
-		});
-		Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
-		applyBtn.setOnMouseClicked(e -> {
-			subStage.close();
-		});
+//		Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
+//		cancelBtn.setOnMouseClicked(e -> {
+//			subStage.close();
+//		});
+//		Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
+//		applyBtn.setOnMouseClicked(e -> {
+//			subStage.close();
+//		});
 	}
 
 	/**

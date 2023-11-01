@@ -30,7 +30,7 @@
       <TextField fx:id="name" layoutX="48.0" layoutY="74.0" />
       <TextField fx:id="code" layoutX="291.0" layoutY="74.0" />
       <TextField fx:id="brand" layoutX="48.0" layoutY="204.0" />
-      <TextField fx:id="supplier" layoutX="291.0" layoutY="204.0" />
       <TextField fx:id="price" layoutX="48.0" layoutY="134.0" prefHeight="23.0" prefWidth="83.0" />
+      <ComboBox fx:id="supplier" layoutX="295.0" layoutY="204.0" prefHeight="23.0" prefWidth="130.0" />
    </children>
 </AnchorPane>

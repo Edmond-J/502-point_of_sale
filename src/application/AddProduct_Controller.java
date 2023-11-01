@@ -7,11 +7,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class AddProduct_Controller {
-	MainUI_Controller mainController;
+	MainUI_Controller mainController=new MainUI_Controller();
 	@FXML
-	TextField name, code, price, brand, supplier;
+	TextField name, code, price, brand;
 	@FXML
 	ComboBox<Unit> unit;
+	@FXML
+	ComboBox<Supplier> supplier;
 	@FXML
 	ComboBox<String> category;
 	@FXML
@@ -23,10 +25,12 @@ public class AddProduct_Controller {
 	public void addProduct() {
 		Product product=new Product();
 		mainController.addProductToArrayList(product);
+		closeDialog();
 	}
 
 	public void closeDialog() {
-		Stage stage = (Stage) unit.getScene().getWindow();
+		Stage stage = (Stage) name.getScene().getWindow();
+		//get the object of the current windows from the elements in it. 
         stage.close();
 	}
 }
