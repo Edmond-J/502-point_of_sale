@@ -1,5 +1,5 @@
 package application;
 
 public enum Unit {
-	KG,PCS,BOX,TRAY,BAG,TEST;
+	KG,PCS,BOX,TRAY,BAG;
 }
