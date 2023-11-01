@@ -14,6 +14,10 @@ public class Product {
 	Date expDate;
 	double inStrck;
 	
+	public Product(){
+		
+	}
+	
 	public Product(int barCode, String name, String brand, double price, Unit unit, Date expDate, double inStrck) {
 		this.barCode = barCode;
 		this.name = name;

@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
@@ -21,12 +22,14 @@ import javafx.stage.Window;
 public class MainUI_Controller {
 	@FXML
 	AnchorPane subpageContainer;
-	@FXML
-	Text text_iventory, text_product;
+//	@FXML
+//	Text text_iventory, text_product;
 	@FXML
 	TableView<Product> productsTableView;
 	ArrayList<Product> productsList = new ArrayList<Product>();
-	AddProduct_Controller addProduct;
+	//supplier arraylist to be implemented
+	
+//	AddProduct_Controller addProduct;
 
 	public MainUI_Controller() {
 	}
@@ -57,9 +60,9 @@ public class MainUI_Controller {
 	}
 
 	@FXML
-	private void showLoadFileDialog() throws IOException {
+	private void showimportFileDialog() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_import.fxml"));
-		Parent importDialog = loader.load();
+		Pane importDialog = loader.load();
 		Stage subStage = new Stage();
 		subStage.initModality(Modality.APPLICATION_MODAL);
 		subStage.setTitle("Import SKUs");
@@ -136,5 +139,9 @@ public class MainUI_Controller {
 
 	public void searchProduct(String userInput) {
 		updateTableView(productsList, productsTableView);
+	}
+	
+	public void addProductToArrayList(Product product){
+		productsList.add(product);
 	}
 }

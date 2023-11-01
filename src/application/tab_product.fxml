@@ -170,7 +170,7 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Button layoutX="436.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#showLoadFileDialog" stylesheets="@application.css" text="Import SKU" />
+      <Button layoutX="436.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#showimportFileDialog" stylesheets="@application.css" text="Import SKU" />
       <Button layoutX="1152.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#showAddProductDialog" styleClass="button-bright" stylesheets="@application.css" text="+ New SKU" AnchorPane.rightAnchor="40.0" />
       <TableView layoutX="309.0" layoutY="185.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="200.0">
         <columns>
