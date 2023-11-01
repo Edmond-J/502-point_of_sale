@@ -8,14 +8,23 @@ import java.util.Date;
 public class Product {
 	int barCode;
 	String name;
+	String brand;
 	double price;
 	Unit unit;
 	Date expDate;
+	double inStrck;
 	
-	
-	
-	
-	public Product() {
-		// TODO Auto-generated constructor stub
+	public Product(int barCode, String name, String brand, double price, Unit unit, Date expDate, double inStrck) {
+		this.barCode = barCode;
+		this.name = name;
+		this.brand = brand;
+		this.price = price;
+		this.unit = unit;
+		this.expDate = expDate;
+		this.inStrck = inStrck;
+	}
+
+	public void toPrint(){
+		
 	}
 }
