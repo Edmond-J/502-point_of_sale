@@ -158,7 +158,7 @@
             <Image url="@../img/point-of-service.png" />
          </image>
       </ImageView>
-      <Text layoutX="1100.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edmond" AnchorPane.rightAnchor="130.0">
+      <Text layoutX="1100.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bimaya" AnchorPane.rightAnchor="135.708984375">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -170,8 +170,8 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Button layoutX="436.0" layoutY="101.0" mnemonicParsing="false" stylesheets="@application.css" text="Import SKU" />
-      <Button layoutX="1152.0" layoutY="101.0" mnemonicParsing="false" styleClass="button-bright" stylesheets="@application.css" text="+ New SKU" AnchorPane.rightAnchor="40.0" />
+      <Button layoutX="436.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#showLoadFileDialog" stylesheets="@application.css" text="Import SKU" />
+      <Button layoutX="1152.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#showAddProductDialog" styleClass="button-bright" stylesheets="@application.css" text="+ New SKU" AnchorPane.rightAnchor="40.0" />
       <TableView layoutX="309.0" layoutY="185.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="200.0">
         <columns>
           <TableColumn prefWidth="75.0" text="BARCODE" />
