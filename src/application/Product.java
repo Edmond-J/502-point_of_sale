@@ -12,7 +12,7 @@ public class Product {
 	double price;
 	Unit unit;
 	Date expDate;
-	double inStrck;
+	double inStock;
 	
 	public Product(int barCode, String name, String brand, double price, Unit unit, Date expDate, double inStrck) {
 		this.barCode = barCode;
@@ -21,7 +21,7 @@ public class Product {
 		this.price = price;
 		this.unit = unit;
 		this.expDate = expDate;
-		this.inStrck = inStrck;
+		this.inStock = inStrck;
 	}
 
 	public void toPrint(){
