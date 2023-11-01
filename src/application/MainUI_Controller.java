@@ -31,14 +31,18 @@ public class MainUI_Controller {
 	
     @FXML
     private void loadProductPage() {
-        loadSubpage("Product.fxml");
+        loadSubpage("tab_product.fxml");
     }
     @FXML
     private void loadInventoryPage() {
-        loadSubpage("Inventory.fxml");
+        loadSubpage("tab_inventory.fxml");
     }
     @FXML
     private void loadDashBoardPage() {
-    	loadSubpage("DashBoard.fxml");
+    	loadSubpage("tab_dashboard.fxml");
+    }
+    @FXML
+    private void loadFromFile(){
+    	
     }
 }
