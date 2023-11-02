@@ -210,6 +210,7 @@ public class MainUI_Controller implements Initializable {
 	}
 
 	public void searchProduct() {
+		if(!search_box.getText().isEmpty()){
 		ArrayList<Product>searchResult=new ArrayList<Product>();
 		for(Product p:productsList){
 			if(p.getName().contains(search_box.getText())){
@@ -218,5 +219,6 @@ public class MainUI_Controller implements Initializable {
 		}
 		productOBList.clear();
 		updateTableView(searchResult);
+		}
 	}
 }

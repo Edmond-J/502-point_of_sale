@@ -16,7 +16,7 @@
       <TextArea fx:id="description" layoutX="48.0" layoutY="339.0" prefHeight="54.0" prefWidth="420.0" />
       <Text layoutX="48.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase Price*" />
       <Text layoutX="48.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp Date" />
-      <Button fx:id="apply_add_stock" layoutX="407.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#addStock" text="Apply" />
+      <Button fx:id="apply_add_stock" layoutX="407.0" layoutY="447.0" mnemonicParsing="false" text="Apply" />
       <Button fx:id="cancel_add_product" layoutX="298.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#closeDialog" text="Cancel" />
       <Text layoutX="48.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand" />
       <Text layoutX="295.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier" />
