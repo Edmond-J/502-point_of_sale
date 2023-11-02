@@ -1,20 +1,18 @@
 package application;
 
-import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AddStock_Controller {
-	MainUI_Controller mainController = new MainUI_Controller();
+public class AddStock_Controller implements Initializable {
 	@FXML
 	TextField name, code, price, brand, weight;
 	@FXML
@@ -24,12 +22,20 @@ public class AddStock_Controller {
 	@FXML
 	DatePicker exp_date;
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		supplier.getItems().add("supplier1");
+		System.out.println();
+//		for (Supplier s : mainController.getSupplierList()) {
+//			supplier.getItems().add(s.name);
+//		}
+	}
+
 	public AddStock_Controller() {
 	}
-	
-	public void addStock() {
+
+	public void addStock(ArrayList<Inventory> inventoryList) {
 		Inventory inventory = new Inventory();
-		mainController.addIventoryToArrayList(inventory);
 		if (checkInvalidation()) {
 			// show message;
 		} else {

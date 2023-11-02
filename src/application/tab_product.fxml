@@ -172,22 +172,21 @@
       </Text>
       <Button layoutX="436.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#showimportFileDialog" stylesheets="@application.css" text="Import SKU" />
       <Button layoutX="1152.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#showAddProductDialog" styleClass="button-bright" stylesheets="@application.css" text="+ New SKU" AnchorPane.rightAnchor="40.0" />
-      <TableView layoutX="309.0" layoutY="185.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="200.0">
+      <TableView fx:id="productsTableView" layoutX="309.0" layoutY="185.0" onMouseClicked="#searchProduct" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="200.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="BARCODE" />
-          <TableColumn prefWidth="75.0" text="NAME" />
-            <TableColumn prefWidth="75.0" text="CATEGORY" />
-            <TableColumn prefWidth="108.0" text="EXPIRE" />
-            <TableColumn prefWidth="91.0" text="PRICE" />
-            <TableColumn minWidth="0.0" prefWidth="75.0" text="UNIT" />
-            <TableColumn prefWidth="75.0" text="IN STOCK" />
+          <TableColumn fx:id="col_itemcode" prefWidth="75.0" text="ITEMCODE" />
+          <TableColumn fx:id="col_name" prefWidth="75.0" text="NAME" />
+            <TableColumn fx:id="col_category" prefWidth="75.0" text="CATEGORY" />
+            <TableColumn fx:id="col_price" prefWidth="91.0" text="PRICE" />
+            <TableColumn fx:id="col_unit" minWidth="0.0" prefWidth="75.0" text="UNIT" />
+            <TableColumn fx:id="col_brand" prefWidth="75.0" text="BRAND" />
             <TableColumn prefWidth="75.0" text="ACTION" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField layoutX="1080.0" layoutY="166.0" AnchorPane.rightAnchor="40.0" />
-      <Text layoutX="1032.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search:" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="170.0" />
+      <TextField fx:id="search_box" layoutX="997.0" layoutY="165.0" promptText="search by name" AnchorPane.rightAnchor="122.0" />
+      <Button layoutX="1179.0" layoutY="165.0" mnemonicParsing="false" onMouseClicked="#searchProduct" stylesheets="@application.css" text="Search" />
    </children>
 </AnchorPane>

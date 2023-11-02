@@ -32,3 +32,6 @@
 	-fx-background-color: #51B1B3;
 	-fx-text-fill: white;
 }
+.text{
+    -fx-fill: black; 
+}
