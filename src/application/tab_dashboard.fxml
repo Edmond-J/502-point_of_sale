@@ -69,7 +69,7 @@
                               <Image url="@../img/pie-chart.png" />
                            </image>
                         </ImageView>
-                        <Text fx:id="text_iventory" fill="WHITE" onMouseClicked="#loadInventoryPage" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation" text="Iventory">
+                        <Text fx:id="text_iventory" fill="WHITE" onMouseClicked="#loadInventoryPage" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation" text="Inventory">
                            <font>
                               <Font name="Tahoma" size="14.0" />
                            </font>

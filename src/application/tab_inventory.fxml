@@ -71,7 +71,7 @@
                               <Image url="@../img/pie-chart.png" />
                            </image>
                         </ImageView>
-                        <Text fx:id="text_iventroy" fill="WHITE" onMouseClicked="#loadInventoryPage" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation" text="Iventory">
+                        <Text fx:id="text_iventroy" fill="WHITE" onMouseClicked="#loadInventoryPage" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="navigation" text="Inventory">
                            <font>
                               <Font name="Tahoma" size="14.0" />
                            </font>
@@ -165,7 +165,7 @@
       </Text>
       <Text layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrator" AnchorPane.rightAnchor="100.0" />
       <Line endX="1030.0" layoutX="210.0" layoutY="150.0" opacity="0.2" startX="100.0" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="40.0" />
-      <Text layoutX="300.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Iventory">
+      <Text layoutX="300.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory">
          <font>
             <Font size="30.0" />
          </font>
@@ -176,7 +176,7 @@
           <TableColumn prefWidth="75.0" text="BARCODE" />
           <TableColumn prefWidth="75.0" text="NAME" />
             <TableColumn prefWidth="75.0" text="CATEGORY" />
-            <TableColumn prefWidth="108.0" text="EXPIRE" />
+            <TableColumn prefWidth="108.0" text="EXPIRY DATE" />
             <TableColumn prefWidth="91.0" text="PRICE" />
             <TableColumn minWidth="0.0" prefWidth="75.0" text="UNIT" />
             <TableColumn prefWidth="75.0" text="IN STOCK" />
