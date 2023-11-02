@@ -7,31 +7,29 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AddProduct_Controller {
+public class AddStock_Controller {
 	MainUI_Controller mainController = new MainUI_Controller();
 	@FXML
-	TextField name, code, price, brand;
+	TextField name, code, price, brand, weight;
 	@FXML
-	ComboBox<Unit> unit;
-	@FXML
-	ComboBox<String> category;
+	ComboBox<String> supplier;
 	@FXML
 	TextArea description;
+	@FXML
+	DatePicker exp_date;
 
-
-	public AddProduct_Controller() {
+	public AddStock_Controller() {
 	}
-
-
-	public void addProduct() {
-		Product product = new Product();
-		mainController.addProductToArrayList(product);
+	
+	public void addStock() {
+		Inventory inventory = new Inventory();
+		mainController.addIventoryToArrayList(inventory);
 		if (checkInvalidation()) {
 			// show message;
 		} else {
