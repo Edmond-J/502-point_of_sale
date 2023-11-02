@@ -1,34 +1,28 @@
 package application;
 
-import java.util.Date;
-
 /**
  * This class is to describe a product
  */
 public class Product {
-	int barCode;
 	String name;
-	String brand;
+	int itemCode;
 	double price;
 	Unit unit;
-	Date expDate;
-	double inStrck;
-	
-	public Product(){
-		
-	}
-	
-	public Product(int barCode, String name, String brand, double price, Unit unit, Date expDate, double inStrck) {
-		this.barCode = barCode;
-		this.name = name;
-		this.brand = brand;
-		this.price = price;
-		this.unit = unit;
-		this.expDate = expDate;
-		this.inStrck = inStrck;
+	String brand;
+	String category;
+
+	public Product() {
 	}
 
-	public void toPrint(){
-		
+	public Product(int barCode, String name, String brand, double price, Unit unit, String category) {
+		this.name = name;
+		this.itemCode = barCode;
+		this.price = price;
+		this.unit = unit;
+		this.brand = brand;
+		this.category = category;
+	}
+
+	public void toPrint() {
 	}
 }

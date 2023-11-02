@@ -27,6 +27,7 @@ public class MainUI_Controller {
 	@FXML
 	TableView<Product> productsTableView;
 	ArrayList<Product> productsList = new ArrayList<Product>();
+	ArrayList<Inventory>inventoryList=new ArrayList<Inventory>();
 	//supplier arraylist to be implemented
 	
 //	AddProduct_Controller addProduct;
@@ -114,7 +115,19 @@ public class MainUI_Controller {
 //			subStage.close();
 //		});
 	}
-
+	
+	@FXML
+	private void showAddStockDialog() throws IOException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_add_stock.fxml"));
+		Parent addstockDialog = loader.load();
+		Stage subStage = new Stage();
+		subStage.initModality(Modality.APPLICATION_MODAL);
+		subStage.setTitle("Add a Stock");
+		subStage.setScene(new Scene(addstockDialog));
+		subStage.setResizable(false);
+		subStage.show();
+	}
+	
 	/**
 	 * to update the table with the provided data.
 	 * @param allProducts: the list need to be put into the table view
@@ -143,5 +156,8 @@ public class MainUI_Controller {
 	
 	public void addProductToArrayList(Product product){
 		productsList.add(product);
+	}
+	public void addIventoryToArrayList(Inventory inventory){
+		inventoryList.add(inventory);
 	}
 }
