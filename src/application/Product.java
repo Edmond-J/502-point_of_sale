@@ -11,6 +11,7 @@ public class Product {
 	String brand;
 	String category;
 
+
 	public Product() {
 	}
 

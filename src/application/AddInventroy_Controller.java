@@ -12,7 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AddStock_Controller implements Initializable {
+public class AddInventroy_Controller implements Initializable {
 	@FXML
 	TextField name, code, price, brand, weight;
 	@FXML
@@ -21,6 +21,7 @@ public class AddStock_Controller implements Initializable {
 	TextArea description;
 	@FXML
 	DatePicker exp_date;
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -31,17 +32,12 @@ public class AddStock_Controller implements Initializable {
 //		}
 	}
 
-	public AddStock_Controller() {
+	public AddInventroy_Controller() {
+		closeDialog();
 	}
 
 	public void addStock(ArrayList<Inventory> inventoryList) {
-		Inventory inventory = new Inventory();
-		if (checkInvalidation()) {
-			// show message;
-		} else {
-			// add data
-			closeDialog();
-		}
+
 	}
 
 	public void closeDialog() {
@@ -50,7 +46,5 @@ public class AddStock_Controller implements Initializable {
 		stage.close();
 	}
 
-	public boolean checkInvalidation() {
-		return false;
-	}
+
 }

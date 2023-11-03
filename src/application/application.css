@@ -7,10 +7,10 @@
 	}
 
 .boxes{
-	-fx-background-radius:30;
+	-fx-background-radius:30.0;
 }
 .circle{
-	-fx-background-radius: 50;
+	-fx-background-radius: 50.0;
 }
 
 .button-dark{
@@ -21,10 +21,18 @@
 .button{
 	-fx-background-color: #51B1B3;
 	-fx-text-fill: white;
-	-fx-background-radius:30;
-	-fx-pref-height: 30;
+	-fx-background-radius:30.0;
+	-fx-pref-height: 30.0;
 }
 
 .transparent{
-	-fx-background-color:rgba(0,0,0,0);
+	-fx-background-color:rgba(0.0,0.0,0.0,0.0);
+}
+.label-info-color{
+	-fx-text-fill: #454d66
+}
+
+.table-view-style {
+    -fx-font-size: 12px; /* 设置字体大小 */
+    -fx-text-fill: #454d66; /* 设置字体颜色 */
 }

@@ -21,16 +21,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class MainUI_Controller implements Initializable {
-	@FXML
-	AnchorPane subpageContainer;
+public class Product_Controller implements Initializable {
+	PoS_Main mainController;
 	@FXML
 	TextField search_box;
 //	@FXML
@@ -49,47 +47,23 @@ public class MainUI_Controller implements Initializable {
 	TableColumn<Product, String> col_unit;
 	@FXML
 	TableColumn<Product, String> col_brand;
-	ArrayList<Product> productsList = new ArrayList<Product>();
-	ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
-	ArrayList<Supplier> supplierList = new ArrayList<Supplier>();
 	ObservableList<Product> productOBList;
-//	AddProduct_Controller addProduct;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		supplierList.add(new Supplier(100, "Green NZ", "14 karori road wellington", 270852547, "greennz@gmail.com"));
+//		supplierList.add(new Supplier(100, "Green NZ", "14 karori road wellington", 270852547, "greennz@gmail.com"));
 //		updateTableView(productsList);
 	}
 
-	public MainUI_Controller() {
+	public Product_Controller() {
 	}
 
-	private void loadSubpage(String fxmlFileName) {
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
-			AnchorPane subpage = loader.load();
-			subpageContainer.getChildren().setAll(subpage);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void setMainController(PoS_Main controller) {
+		mainController = controller;
 	}
 
 	@FXML
-	private void loadProductPage() {
-		loadSubpage("tab_product.fxml");
-	}
-
-	@FXML
-	private void loadInventoryPage() {
-		loadSubpage("tab_inventory.fxml");
-	}
-
-	@FXML
-	private void loadDashBoardPage() {
-		loadSubpage("tab_dashboard.fxml");
-	}
-
-	@FXML
-	private void showimportFileDialog() throws IOException {
+	private void showImportFileDialog() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_import.fxml"));
 		Parent importDialog = loader.load();
 		Stage subStage = new Stage();
@@ -106,7 +80,7 @@ public class MainUI_Controller implements Initializable {
 			fileChooser.setTitle("Open File");
 			fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.csv"),
 					new ExtensionFilter("All Files", "*.*"));
-			Window window = subpageContainer.getScene().getWindow();
+			Window window = browseBtn.getParent().getScene().getWindow();
 			File selectedFile = fileChooser.showOpenDialog(window);
 //			System.out.println(selectedFile.getPath());
 			fileAddress.setText(selectedFile.getPath());
@@ -116,7 +90,7 @@ public class MainUI_Controller implements Initializable {
 			if (!fileAddress.getText().isEmpty()) {
 //				loadSKUFromFile(fileAddress.getText());
 				loadSKUFromFile("products.csv");
-				updateTableView(productsList);
+				updateTableView(mainController.productsList);
 				subStage.close();
 			}
 		});
@@ -139,8 +113,8 @@ public class MainUI_Controller implements Initializable {
 		AddProduct_Controller subController = loader.getController();
 		Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
 		applyBtn.setOnMouseClicked(e -> {
-			subController.addProduct(productsList);
-			updateTableView(productsList);
+			subController.addProduct(mainController.productsList);
+			updateTableView(mainController.productsList);
 		});
 //		Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
 //		cancelBtn.setOnMouseClicked(e -> {
@@ -158,10 +132,10 @@ public class MainUI_Controller implements Initializable {
 		subStage.setScene(new Scene(addstockDialog));
 		subStage.setResizable(false);
 		subStage.show();
-		AddStock_Controller subController = loader.getController();
+		AddInventroy_Controller subController = loader.getController();
 		Button applyBtn = (Button)addstockDialog.lookup("#apply_add_product");
 		applyBtn.setOnMouseClicked(e -> {
-			subController.addStock(inventoryList);
+			subController.addStock(mainController.inventoryList);
 		});
 	}
 
@@ -193,7 +167,7 @@ public class MainUI_Controller implements Initializable {
 			sc.useDelimiter(",");
 			sc.nextLine();
 			while (sc.hasNextLine()) {
-				productsList
+				mainController.productsList
 						.add(new Product(sc.next(), sc.nextInt(), sc.nextDouble(), sc.next(), sc.next(), sc.next()));
 				sc.nextLine();
 			}
@@ -210,15 +184,15 @@ public class MainUI_Controller implements Initializable {
 	}
 
 	public void searchProduct() {
-		if(!search_box.getText().isEmpty()){
-		ArrayList<Product>searchResult=new ArrayList<Product>();
-		for(Product p:productsList){
-			if(p.getName().contains(search_box.getText())){
-				searchResult.add(p);
+		if (!search_box.getText().isEmpty()) {
+			ArrayList<Product> searchResult = new ArrayList<Product>();
+			for (Product p : mainController.productsList) {
+				if (p.getName().contains(search_box.getText())) {
+					searchResult.add(p);
+				}
 			}
-		}
-		productOBList.clear();
-		updateTableView(searchResult);
+			productOBList.clear();
+			updateTableView(searchResult);
 		}
 	}
 }

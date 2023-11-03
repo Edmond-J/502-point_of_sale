@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="400.0" minWidth="640.0" prefHeight="800.0" prefWidth="1280.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PoS_Main">
+   <children>
+      <Pane prefHeight="800.0" prefWidth="285.0" style="-fx-background-color: lightgray;" stylesheets="@application.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+         <children>
+            <HBox alignment="TOP_CENTER" layoutY="5.0" prefHeight="45.0" prefWidth="284.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="circle">
+                     <image>
+                        <Image url="@../img/point-of-service.png" />
+                     </image>
+                  </ImageView>
+                  <Pane prefHeight="50.0" prefWidth="11.0" />
+                  <Label style="-fx-text-fill: #7f7f7f;" text="PoS" textFill="#7f7f7f">
+                     <font>
+                        <Font name="Cambria Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Pane prefHeight="50.0" prefWidth="11.0" />
+                  <Label alignment="BASELINE_LEFT" style="-fx-text-fill: #8e4141;" text="System" textFill="#8e4141">
+                     <font>
+                        <Font name="Cambria" size="36.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+            <VBox fillWidth="false" layoutX="27.0" layoutY="89.0" prefHeight="449.0" prefWidth="234.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="220.0" styleClass="navigation">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/pie-chart.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="text_dashboard" fill="WHITE" onMouseClicked="#switchToDashboard" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Russo One" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="60.0" prefHeight="45.0" prefWidth="220.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/pie-chart.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="text_inventory" fill="WHITE" onMouseClicked="#switchToInventory" strokeType="OUTSIDE" strokeWidth="0.0" text="INVENTORY">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Russo One" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="105.0" prefHeight="45.0" prefWidth="220.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/pie-chart.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="text_product" fill="WHITE" onMouseClicked="#switchToProduct" strokeType="OUTSIDE" strokeWidth="0.0" text="PRODUCT">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Russo One" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="150.0" prefHeight="45.0" prefWidth="220.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/pie-chart.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MEMBERSHIP">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Russo One" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="45.0" prefWidth="220.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/pie-chart.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SUPPLIER">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Russo One" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="220.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/pie-chart.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ACCOUNT">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Russo One" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="240.0" prefHeight="45.0" prefWidth="220.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/pie-chart.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTING">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Russo One" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <styleClass>
+                  <String fx:value="boxes" />
+                  <String fx:value="theme" />
+               </styleClass>
+               <padding>
+                  <Insets left="25.0" right="25.0" top="15.0" />
+               </padding>
+            </VBox>
+            <Label layoutX="25.0" layoutY="770.0" prefHeight="16.0" prefWidth="79.0" styleClass="label-info-color" text="JEBS.Co.Ltd.Inc">
+               <font>
+                  <Font name="Impact" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="40.0" fitWidth="66.0" layoutX="25.0" layoutY="738.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="116.0" layoutY="771.0" styleClass="label-info-color" text="Global Support: 0800 275 265">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="411.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" styleClass="circle">
+         <image>
+            <Image url="@../img/woman.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="page_title" fill="#8e4141" layoutX="1105.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard" AnchorPane.rightAnchor="40.0">
+         <font>
+            <Font name="Cambria" size="40.0" />
+         </font>
+      </Text>
+      <AnchorPane fx:id="subpage" layoutX="286.0" layoutY="70.0" prefHeight="730.0" prefWidth="995.0" />
+      <Label layoutX="310.0" layoutY="40.0" styleClass="label-info-color" text="Administrator" />
+      <Label layoutX="310.0" layoutY="20.0" styleClass="label-info-color" text="Edmond">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

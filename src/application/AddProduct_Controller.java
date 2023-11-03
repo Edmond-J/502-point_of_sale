@@ -18,11 +18,10 @@ public class AddProduct_Controller implements Initializable {
 	@FXML
 	Text name_title, code_title, price_title, unit_title, brand_title, category_title;
 	@FXML
-	ComboBox<String> unit;
+	ComboBox<String> unit, category;
 	@FXML
-	ComboBox<String> category;
-	@FXML
-	TextArea description;
+	TextArea description, error;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		unit.getItems().addAll("BAG", "BOX", "KG", "PCS", "TRAY");
@@ -33,6 +32,7 @@ public class AddProduct_Controller implements Initializable {
 	}
 
 	public void addProduct(ArrayList<Product> productsList) {
+		error.clear();
 //		Scene scene = (Scene)name.getScene();
 //		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		boolean valid = true;
@@ -41,13 +41,19 @@ public class AddProduct_Controller implements Initializable {
 //			System.out.print(name_title.toString());
 			name_title.setStyle("-fx-fill: red;");
 			valid = false;
+			error.appendText("error: 'name' is mandatory fields\n");
 		} else {
 			product.setName(name.getText());
 			name_title.setStyle("-fx-fill: black;");
 		}
-		if (price.getText().isEmpty() || price.getText().matches(".*\\D.*")) {
+		if (price.getText().isEmpty()) {
 			price_title.setStyle("-fx-fill: red;");
 			valid = false;
+			error.appendText("error: 'price' is mandatory fields\n");
+		} else if (price.getText().matches("[^0-9.]*")) {
+			price_title.setStyle("-fx-fill: red;");
+			valid = false;
+			error.appendText("error: only number and '.' are allowed in 'price'\n");
 		} else {
 			product.setPrice(Double.parseDouble(price.getText()));
 			price_title.setStyle("-fx-fill: black;");
@@ -55,6 +61,7 @@ public class AddProduct_Controller implements Initializable {
 		if (unit.getValue() == null) {
 			unit_title.setStyle("-fx-fill: red;");
 			valid = false;
+			error.appendText("error: 'unit' is mandatory fields\n");
 		} else {
 			product.setUnit(unit.getValue());
 			unit_title.setStyle("-fx-fill: black;");
@@ -62,11 +69,12 @@ public class AddProduct_Controller implements Initializable {
 		if (category.getValue() == null) {
 			category_title.setStyle("-fx-fill: red;");
 			valid = false;
+			error.appendText("error: 'category' is mandatory fields\n");
 		} else {
 			product.setCategory(category.getValue());
 			category_title.setStyle("-fx-fill: black;");
 		}
-		if(valid){
+		if (valid) {
 			productsList.add(product);
 			closeDialog();
 		}
@@ -82,10 +90,10 @@ public class AddProduct_Controller implements Initializable {
 	 * check the validity of all input fields.Set the invalid fields with red text.
 	 * @return True if every fields is valid. False if any of the fields is invalid.
 	 */
-	public boolean checkValidity() {
-		if (price.getText().contains("a")) {
-			return false;
-		}
-		return true;
-	}
+//	public boolean checkValidity() {
+//		if (price.getText().contains("a")) {
+//			return false;
+//		}
+//		return true;
+//	}
 }

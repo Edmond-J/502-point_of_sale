@@ -11,7 +11,7 @@ public class Inventory {
 	String unit;
 	Date expDate;
 	double inStrck;
-	
+
 	public Inventory() {
 	}
 
@@ -26,5 +26,4 @@ public class Inventory {
 		this.expDate = expDate;
 		this.inStrck = inStrck;
 	}
-	
 }

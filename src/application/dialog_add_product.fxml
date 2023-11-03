@@ -18,12 +18,13 @@
       <ComboBox fx:id="unit" layoutX="292.0" layoutY="135.0" prefHeight="23.0" prefWidth="161.0" />
       <Button fx:id="apply_add_product" layoutX="407.0" layoutY="447.0" mnemonicParsing="false" text="Apply" />
       <Button fx:id="cancel_add_product" layoutX="298.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#closeDialog" text="Cancel" />
-      <Text fx:id="brand_" layoutX="48.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand" />
+      <Text fx:id="brand_title" layoutX="48.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand" />
       <Text fx:id="category_title" layoutX="291.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category*" />
       <ComboBox fx:id="category" layoutX="292.0" layoutY="205.0" prefHeight="23.0" prefWidth="161.0" />
       <TextField fx:id="name" layoutX="48.0" layoutY="74.0" />
       <TextField fx:id="code" layoutX="291.0" layoutY="74.0" />
       <TextField fx:id="brand" layoutX="48.0" layoutY="204.0" />
       <TextField fx:id="price" layoutX="48.0" layoutY="134.0" prefHeight="23.0" prefWidth="161.0" />
+      <TextArea fx:id="error" editable="false" focusTraversable="false" layoutX="48.0" layoutY="344.0" prefHeight="125.0" prefWidth="246.0" styleClass="transparent" stylesheets="@application.css" />
    </children>
 </AnchorPane>
