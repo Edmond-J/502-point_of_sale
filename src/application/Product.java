@@ -1,5 +1,12 @@
 package application;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+
 /**
  * This class is to describe a product
  */
@@ -23,7 +30,20 @@ public class Product {
 		this.category = category;
 	}
 
-	public void toPrint() {
+	public void saveToFile() throws IOException {
+		File file = new File("data/db_ products.csv");
+		System.out.println(file.exists());
+		FileWriter fileWriter = new FileWriter(file, true);
+		CSVPrinter csvPrinter;
+		if (!file.exists()) {
+			csvPrinter = new CSVPrinter(fileWriter,
+					CSVFormat.DEFAULT.withHeader("NAME", "ITEM", "CODE", "PRICE", "UNIT", "BRAND", "CATEGORY"));
+		} else {
+			csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT);
+		}
+		csvPrinter.printRecord(name, itemCode, price, unit, brand, category);
+		csvPrinter.flush();
+		csvPrinter.close();
 	}
 
 	public void setName(String name) {

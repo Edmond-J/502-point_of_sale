@@ -1,9 +1,14 @@
 package application;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -38,6 +43,7 @@ public class PoS_Main extends Application implements Initializable {
 		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("tab_product.fxml"));
 		FXMLLoader loader3 = new FXMLLoader(getClass().getResource("tab_inventory.fxml"));
 		try {
+			loadData();
 			sceneDash = loader1.load();
 			sceneProd = loader2.load();
 			sceneProd.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -96,6 +102,28 @@ public class PoS_Main extends Application implements Initializable {
 		currentTab = text;
 		currentTab.setStyle("-fx-fill:#dad873;");
 		currentTab.getParent().setStyle("-fx-background-color:#454d66");
+	}
+
+	private void loadData() {
+		try (FileReader fileReader = new FileReader("data/db_ products.csv");
+				CSVParser csvParser = new CSVParser(fileReader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+			for (CSVRecord csvRecord : csvParser) {
+				// Get values from CSV columns
+				String name = csvRecord.get("NAME");
+				int itemCode = Integer.parseInt(csvRecord.get("ITEM CODE"));
+				double price = Double.parseDouble(csvRecord.get("PRICE"));
+				String unit = csvRecord.get("UNIT");
+				String brand = csvRecord.get("BRAND");
+				String category = csvRecord.get("CATEGORY");
+				// Handle the case where the "Age" column is empty
+				// Create a Person object
+				Product product = new Product(name, itemCode, price, unit, brand, category);
+				// Do something with the person object
+				productsList.add(product);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void main(String[] args) {

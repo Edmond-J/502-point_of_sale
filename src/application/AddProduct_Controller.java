@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -31,7 +32,7 @@ public class AddProduct_Controller implements Initializable {
 	public AddProduct_Controller() {
 	}
 
-	public void addProduct(ArrayList<Product> productsList) {
+	public void addProduct(ArrayList<Product> productsList) throws IOException {
 		error.clear();
 //		Scene scene = (Scene)name.getScene();
 //		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -110,6 +111,7 @@ public class AddProduct_Controller implements Initializable {
 		}
 		if (valid) {
 			productsList.add(product);
+			product.saveToFile();
 			closeDialog();
 		}
 	}

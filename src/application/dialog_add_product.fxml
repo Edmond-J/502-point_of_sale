@@ -25,6 +25,6 @@
       <TextField fx:id="brand" layoutX="48.0" layoutY="196.0" />
       <ComboBox fx:id="category" layoutX="292.0" layoutY="197.0" prefHeight="23.0" prefWidth="161.0" />
       <TextArea fx:id="description" layoutX="46.0" layoutY="276.0" prefHeight="54.0" prefWidth="408.0" styleClass="transparent" />
-      <TextArea fx:id="error" editable="false" focusTraversable="false" layoutX="46.0" layoutY="338.0" prefHeight="147.0" prefWidth="249.0" style="-fx-background-color: #454d66; -fx-border-color: #454d66;" styleClass="transparent" />
+      <TextArea fx:id="error" editable="false" focusTraversable="false" layoutX="46.0" layoutY="338.0" prefHeight="147.0" prefWidth="249.0" style="-fx-background-color: #454d66; -fx-border-color: #454d66;" styleClass="transparent" wrapText="true" />
    </children>
 </AnchorPane>

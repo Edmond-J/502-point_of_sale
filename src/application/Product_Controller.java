@@ -32,6 +32,7 @@ import javafx.util.Duration;
 
 public class Product_Controller implements Initializable {
 	PoS_Main mainController;
+	ObservableList<Product> productOBList;
 	@FXML
 	TextField search_box;
 	@FXML
@@ -50,12 +51,11 @@ public class Product_Controller implements Initializable {
 	TableColumn<Product, String> col_unit;
 	@FXML
 	TableColumn<Product, String> col_brand;
-	ObservableList<Product> productOBList;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 //		supplierList.add(new Supplier(100, "Green NZ", "14 karori road wellington", 270852547, "greennz@gmail.com"));
-//		updateTableView(productsList);
+//		
 	}
 
 	public Product_Controller() {
@@ -63,6 +63,7 @@ public class Product_Controller implements Initializable {
 
 	public void setMainController(PoS_Main controller) {
 		mainController = controller;
+		updateTableView(mainController.productsList);
 	}
 
 	@FXML
@@ -84,16 +85,15 @@ public class Product_Controller implements Initializable {
 			fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"),
 					new ExtensionFilter("All Files", "*.*"));
 			Window window = browseBtn.getParent().getScene().getWindow();
+//			Window window=mainController.sceneProd.getScene().getWindow(); //another way to get the window
 			File selectedFile = fileChooser.showOpenDialog(window);
-//			System.out.println(selectedFile.getPath());
 			if (selectedFile != null)
 				fileAddress.setText(selectedFile.getPath());
 		});
 		Button applyBtn = (Button)importDialog.lookup("#apply_import");
 		applyBtn.setOnMouseClicked(e -> {
 			if (!fileAddress.getText().isEmpty()) {
-//				loadSKUFromFile(fileAddress.getText());
-				loadSKUFromFile("products.csv");
+				loadSKUFromFile(fileAddress.getText());
 				updateTableView(mainController.productsList);
 				subStage.close();
 			}
@@ -117,7 +117,11 @@ public class Product_Controller implements Initializable {
 		AddProduct_Controller subController = loader.getController();
 		Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
 		applyBtn.setOnMouseClicked(e -> {
-			subController.addProduct(mainController.productsList);
+			try {
+				subController.addProduct(mainController.productsList);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			updateTableView(mainController.productsList);
 		});
 //		Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
@@ -131,7 +135,7 @@ public class Product_Controller implements Initializable {
 	 * @param allProducts: the list need to be put into the table view
 	 * @param tableview: the tableview which all the products need to fillin
 	 */
-	public void updateTableView(ArrayList<Product> productsList) {
+	private void updateTableView(ArrayList<Product> productsList) {
 		productOBList = FXCollections.observableArrayList(productsList);
 		productsTableView.setItems(productOBList);
 		col_name.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
@@ -148,11 +152,11 @@ public class Product_Controller implements Initializable {
 	 * the save and load need to be in line with each other.
 	 * this method can be tested offline.
 	 */
-	public void loadSKUFromFile(String fileName) {
+	private void loadSKUFromFile(String fileName) {
 		try {
 			int imported = 0;
 			int duplicate = 0;
-			Scanner sc = new Scanner(new File("products.csv"));
+			Scanner sc = new Scanner(new File(fileName));
 			sc.useDelimiter(",");
 			sc.nextLine();
 			while (sc.hasNextLine()) {
@@ -167,14 +171,15 @@ public class Product_Controller implements Initializable {
 					}
 				}
 				if (isUnique) {
-					mainController.productsList
-							.add(new Product(name, sc.nextInt(), sc.nextDouble(), sc.next(), sc.next(), sc.next()));
+					Product product = new Product(name, sc.nextInt(), sc.nextDouble(), sc.next(), sc.next(), sc.next());
+					mainController.productsList.add(product);
+					product.saveToFile();
 					sc.nextLine();
 					imported++;
 				}
 			}
 			import_result.setText(imported+" SKU imported. "+duplicate+" SKU duplicated.");
-			System.out.println(duplicate+" SKU duplicated. "+imported+" SKU imported");
+//			System.out.println(imported+" SKU imported. "+duplicate+" SKU duplicated.");
 			FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), import_result);
 			fadeOut.setFromValue(1.0);
 			fadeOut.setToValue(0.0);
@@ -185,13 +190,8 @@ public class Product_Controller implements Initializable {
 		}
 	}
 
-	public void loadProductsFromeDatabase(String fileName) {
-	}
-
-	public void saveProductsToDatabase(String fileName) {
-	}
-
-	public void searchProduct() {
+	@FXML
+	private void searchProduct() {
 		if (!search_box.getText().isEmpty()) {
 			ArrayList<Product> searchResult = new ArrayList<Product>();
 			for (Product p : mainController.productsList) {

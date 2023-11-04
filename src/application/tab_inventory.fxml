@@ -40,9 +40,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Pane layoutX="679.0" layoutY="95.0" prefHeight="52.0" prefWidth="284.0" style="-fx-background-color: lightgray;" AnchorPane.rightAnchor="32.0">
+      <Pane layoutX="679.0" layoutY="94.0" prefHeight="54.0" prefWidth="284.0" style="-fx-background-color: lightgray;" AnchorPane.rightAnchor="32.0">
          <children>
-            <Button layoutX="221.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #808080;" stylesheets="@application.css" text="Search">
+            <Button layoutX="221.0" layoutY="12.0" mnemonicParsing="false" stylesheets="@application.css" text="Search">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
