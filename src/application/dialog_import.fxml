@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainUI_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Product_Controller">
    <children>
       <Button fx:id="apply_import" layoutX="213.0" layoutY="151.0" mnemonicParsing="false" text="Apply" />
       <Button fx:id="cancel_import" layoutX="123.0" layoutY="151.0" mnemonicParsing="false" text="Cancel" />
