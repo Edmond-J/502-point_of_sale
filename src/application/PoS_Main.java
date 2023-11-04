@@ -13,11 +13,14 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class PoS_Main extends Application implements Initializable {
 	@FXML
 	AnchorPane subpage;
+	@FXML
+	HBox dashboard, inventory, product;
 	@FXML
 	Text page_title, text_dashboard, text_product, text_inventory;
 	Parent sceneDash, sceneProd, sceneIven;
@@ -89,8 +92,10 @@ public class PoS_Main extends Application implements Initializable {
 
 	private void textHighlight(Text text) {
 		currentTab.setStyle("-fx-fill:white;");
+		currentTab.getParent().setStyle("");
 		currentTab = text;
 		currentTab.setStyle("-fx-fill:#dad873;");
+		currentTab.getParent().setStyle("-fx-background-color:#454d66");
 	}
 
 	public static void main(String[] args) {

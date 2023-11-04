@@ -7,24 +7,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddProduct_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #454d66;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddProduct_Controller">
    <children>
-      <Text fx:id="name_title" layoutX="48.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name*" />
-      <Text fx:id="code_title" layoutX="292.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" />
-      <Text layoutX="46.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Description" />
-      <TextArea fx:id="description" layoutX="46.0" layoutY="276.0" prefHeight="54.0" prefWidth="408.0" />
-      <Text fx:id="price_title" layoutX="48.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price*" />
-      <Text fx:id="unit_title" layoutX="292.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="per Unit*" />
-      <ComboBox fx:id="unit" layoutX="292.0" layoutY="135.0" prefHeight="23.0" prefWidth="161.0" />
+      <Text fx:id="name_title" fill="WHITE" layoutX="48.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name*" />
+      <Text fx:id="code_title" fill="WHITE" layoutX="290.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" />
+      <Text fill="WHITE" layoutX="46.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Description" />
+      <Text fx:id="price_title" fill="WHITE" layoutX="48.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price*" />
+      <Text fx:id="unit_title" fill="WHITE" layoutX="290.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Per Unit*" />
       <Button fx:id="apply_add_product" layoutX="407.0" layoutY="447.0" mnemonicParsing="false" text="Apply" />
       <Button fx:id="cancel_add_product" layoutX="298.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#closeDialog" text="Cancel" />
-      <Text fx:id="brand_title" layoutX="48.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand" />
-      <Text fx:id="category_title" layoutX="291.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category*" />
-      <ComboBox fx:id="category" layoutX="292.0" layoutY="205.0" prefHeight="23.0" prefWidth="161.0" />
+      <Text fx:id="brand_title" fill="WHITE" layoutX="48.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand" />
+      <Text fx:id="category_title" fill="WHITE" layoutX="291.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category*" />
       <TextField fx:id="name" layoutX="48.0" layoutY="74.0" />
       <TextField fx:id="code" layoutX="291.0" layoutY="74.0" />
-      <TextField fx:id="brand" layoutX="48.0" layoutY="204.0" />
       <TextField fx:id="price" layoutX="48.0" layoutY="134.0" prefHeight="23.0" prefWidth="161.0" />
-      <TextArea fx:id="error" editable="false" focusTraversable="false" layoutX="48.0" layoutY="344.0" prefHeight="125.0" prefWidth="246.0" styleClass="transparent" stylesheets="@application.css" />
+      <ComboBox fx:id="unit" layoutX="292.0" layoutY="135.0" prefHeight="23.0" prefWidth="161.0" />
+      <TextField fx:id="brand" layoutX="48.0" layoutY="196.0" />
+      <ComboBox fx:id="category" layoutX="292.0" layoutY="197.0" prefHeight="23.0" prefWidth="161.0" />
+      <TextArea fx:id="description" layoutX="46.0" layoutY="276.0" prefHeight="54.0" prefWidth="408.0" styleClass="transparent" />
+      <TextArea fx:id="error" editable="false" focusTraversable="false" layoutX="46.0" layoutY="338.0" prefHeight="147.0" prefWidth="249.0" style="-fx-background-color: #454d66; -fx-border-color: #454d66;" styleClass="transparent" />
    </children>
 </AnchorPane>

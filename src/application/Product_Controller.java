@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+import javafx.animation.FadeTransition;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,18 +22,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import javafx.util.Duration;
 
 public class Product_Controller implements Initializable {
 	PoS_Main mainController;
 	@FXML
 	TextField search_box;
-//	@FXML
-//	Text text_iventory, text_product;
+	@FXML
+	Text import_result;
 	@FXML
 	TableView<Product> productsTableView;
 	@FXML
@@ -78,12 +81,13 @@ public class Product_Controller implements Initializable {
 		browseBtn.setOnMouseClicked(e -> {
 			FileChooser fileChooser = new FileChooser();
 			fileChooser.setTitle("Open File");
-			fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*.csv"),
+			fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"),
 					new ExtensionFilter("All Files", "*.*"));
 			Window window = browseBtn.getParent().getScene().getWindow();
 			File selectedFile = fileChooser.showOpenDialog(window);
 //			System.out.println(selectedFile.getPath());
-			fileAddress.setText(selectedFile.getPath());
+			if (selectedFile != null)
+				fileAddress.setText(selectedFile.getPath());
 		});
 		Button applyBtn = (Button)importDialog.lookup("#apply_import");
 		applyBtn.setOnMouseClicked(e -> {
@@ -122,23 +126,6 @@ public class Product_Controller implements Initializable {
 //		});
 	}
 
-	@FXML
-	private void showAddStockDialog() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_add_stock.fxml"));
-		Parent addstockDialog = loader.load();
-		Stage subStage = new Stage();
-		subStage.initModality(Modality.APPLICATION_MODAL);
-		subStage.setTitle("Add a Stock");
-		subStage.setScene(new Scene(addstockDialog));
-		subStage.setResizable(false);
-		subStage.show();
-		AddInventroy_Controller subController = loader.getController();
-		Button applyBtn = (Button)addstockDialog.lookup("#apply_add_product");
-		applyBtn.setOnMouseClicked(e -> {
-			subController.addStock(mainController.inventoryList);
-		});
-	}
-
 	/**
 	 * to update the table with the provided data.
 	 * @param allProducts: the list need to be put into the table view
@@ -163,14 +150,35 @@ public class Product_Controller implements Initializable {
 	 */
 	public void loadSKUFromFile(String fileName) {
 		try {
+			int imported = 0;
+			int duplicate = 0;
 			Scanner sc = new Scanner(new File("products.csv"));
 			sc.useDelimiter(",");
 			sc.nextLine();
 			while (sc.hasNextLine()) {
-				mainController.productsList
-						.add(new Product(sc.next(), sc.nextInt(), sc.nextDouble(), sc.next(), sc.next(), sc.next()));
-				sc.nextLine();
+				String name = sc.next();
+				boolean isUnique = true;
+				for (Product p : mainController.productsList) {
+					if (p.getName().equals(name)) {
+						sc.nextLine();
+						duplicate++;
+						isUnique = false;
+						break;
+					}
+				}
+				if (isUnique) {
+					mainController.productsList
+							.add(new Product(name, sc.nextInt(), sc.nextDouble(), sc.next(), sc.next(), sc.next()));
+					sc.nextLine();
+					imported++;
+				}
 			}
+			import_result.setText(imported+" SKU imported. "+duplicate+" SKU duplicated.");
+			System.out.println(duplicate+" SKU duplicated. "+imported+" SKU imported");
+			FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), import_result);
+			fadeOut.setFromValue(1.0);
+			fadeOut.setToValue(0.0);
+			fadeOut.play();
 			sc.close();
 		} catch (IOException e) {
 			System.out.println(("Error: "+e));

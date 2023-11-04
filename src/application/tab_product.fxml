@@ -10,8 +10,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="subpageContainer" maxHeight="1080.0" maxWidth="1920.0" minHeight="400.0" minWidth="640.0" prefHeight="800.0" prefWidth="995.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Product_Controller">
+<AnchorPane fx:id="subpageContainer" maxHeight="1080.0" maxWidth="1920.0" minHeight="400.0" minWidth="640.0" prefHeight="730.0" prefWidth="995.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Product_Controller">
    <children>
       <Line endX="1030.0" layoutX="-68.0" layoutY="94.0" opacity="0.2" startX="100.0" AnchorPane.leftAnchor="31.5" AnchorPane.rightAnchor="32.5" />
       <Button layoutX="155.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showImportFileDialog" prefWidth="90.0" text="Import SKU">
@@ -21,22 +22,16 @@
                   <Color opacity="0.30000001192092896" />
                </color>
             </DropShadow>
-         </effect>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Button layoutX="32.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showAddProductDialog" prefWidth="90.0" text="+ New SKU" AnchorPane.rightAnchor="873.0">
+         </effect></Button>
+      <Button layoutX="32.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showAddProductDialog" prefWidth="90.0" text="+ New SKU">
          <effect>
             <DropShadow offsetY="3.0">
                <color>
                   <Color opacity="0.30000001192092896" />
                </color>
             </DropShadow>
-         </effect>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <TableView fx:id="productsTableView" layoutX="32.0" layoutY="147.0" prefHeight="560.0" prefWidth="931.0" styleClass="table-view-style" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="147.0">
+         </effect></Button>
+      <TableView fx:id="productsTableView" layoutX="32.0" layoutY="147.0" prefHeight="560.0" prefWidth="931.0" styleClass="transparent" stylesheets="@tableview.css" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="147.0">
         <columns>
           <TableColumn fx:id="col_itemcode" prefWidth="75.0" text="ITEMCODE" />
           <TableColumn fx:id="col_name" prefWidth="75.0" text="NAME" />
@@ -52,13 +47,14 @@
       </TableView>
       <Pane layoutX="679.0" layoutY="95.0" prefHeight="52.0" prefWidth="284.0" style="-fx-background-color: lightgray;" AnchorPane.rightAnchor="32.0">
          <children>
-            <Button layoutX="221.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#searchProduct" style="-fx-background-color: #808080;" stylesheets="@application.css" text="Search">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <TextField fx:id="search_box" layoutX="31.0" layoutY="12.0" prefHeight="30.0" prefWidth="173.0" promptText="search by name" style="-fx-background-color: white; -fx-background-radius: 0;" styleClass="transparent" />
+            <Button layoutX="221.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#searchProduct" style="-fx-background-color: #808080;" stylesheets="@application.css" text="Search" />
+            <TextField fx:id="search_box" layoutX="31.0" layoutY="12.0" prefHeight="30.0" prefWidth="173.0" promptText="search by name" style="-fx-background-color: white; -fx-text-fill: #454d66; -fx-border-color: white;" />
          </children>
       </Pane>
+      <Text fx:id="import_result" layoutX="335.0" layoutY="652.0" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #454d66;" textAlignment="CENTER" wrappingWidth="325.3830757141113">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

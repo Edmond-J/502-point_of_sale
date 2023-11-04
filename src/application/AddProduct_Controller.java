@@ -37,14 +37,48 @@ public class AddProduct_Controller implements Initializable {
 //		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		boolean valid = true;
 		Product product = new Product();
+		if (!code.getText().isEmpty()) {
+			if (!code.getText().matches("\\d*")) {
+				code_title.setStyle("-fx-fill: red;");
+				error.appendText("error: 'code' can only contain numbers\n");
+				valid = false;
+			} else {
+				Boolean redundant = false;
+				for (Product p : productsList) {
+					if (Integer.parseInt(code.getText()) == p.getItemCode()) {
+						code_title.setStyle("-fx-fill: red;");
+						error.appendText("error: duplicated product code\n");
+						redundant = true;
+						valid = false;
+						break;
+					}
+				}
+				if (!redundant) {
+					product.setItemCode(Integer.parseInt(code.getText()));
+					code_title.setStyle("-fx-fill: white;");
+				}
+			}
+		} else code_title.setStyle("-fx-fill: white;");
 		if (name.getText().isEmpty()) {
 //			System.out.print(name_title.toString());
 			name_title.setStyle("-fx-fill: red;");
 			valid = false;
 			error.appendText("error: 'name' is mandatory fields\n");
 		} else {
-			product.setName(name.getText());
-			name_title.setStyle("-fx-fill: black;");
+			Boolean redundant = false;
+			for (Product p : productsList) {
+				if (name.getText().equals(p.getName())) {
+					name_title.setStyle("-fx-fill: red;");
+					error.appendText("error: duplicated product name\n");
+					redundant = true;
+					valid = false;
+					break;
+				}
+			}
+			if (!redundant) {
+				product.setName(name.getText());
+				name_title.setStyle("-fx-fill: white;");
+			}
 		}
 		if (price.getText().isEmpty()) {
 			price_title.setStyle("-fx-fill: red;");
@@ -56,7 +90,7 @@ public class AddProduct_Controller implements Initializable {
 			error.appendText("error: only number and '.' are allowed in 'price'\n");
 		} else {
 			product.setPrice(Double.parseDouble(price.getText()));
-			price_title.setStyle("-fx-fill: black;");
+			price_title.setStyle("-fx-fill: white;");
 		}
 		if (unit.getValue() == null) {
 			unit_title.setStyle("-fx-fill: red;");
@@ -64,7 +98,7 @@ public class AddProduct_Controller implements Initializable {
 			error.appendText("error: 'unit' is mandatory fields\n");
 		} else {
 			product.setUnit(unit.getValue());
-			unit_title.setStyle("-fx-fill: black;");
+			unit_title.setStyle("-fx-fill: white;");
 		}
 		if (category.getValue() == null) {
 			category_title.setStyle("-fx-fill: red;");
@@ -72,7 +106,7 @@ public class AddProduct_Controller implements Initializable {
 			error.appendText("error: 'category' is mandatory fields\n");
 		} else {
 			product.setCategory(category.getValue());
-			category_title.setStyle("-fx-fill: black;");
+			category_title.setStyle("-fx-fill: white;");
 		}
 		if (valid) {
 			productsList.add(product);
@@ -85,7 +119,6 @@ public class AddProduct_Controller implements Initializable {
 		// get the object of the current windows from the elements in it.
 		stage.close();
 	}
-
 	/**
 	 * check the validity of all input fields.Set the invalid fields with red text.
 	 * @return True if every fields is valid. False if any of the fields is invalid.

@@ -27,13 +27,13 @@
                      </image>
                   </ImageView>
                   <Pane prefHeight="50.0" prefWidth="11.0" />
-                  <Label style="-fx-text-fill: #7f7f7f;" text="PoS" textFill="#7f7f7f">
+                  <Label style="-fx-text-fill: #7f7f7f;" text="Fresh" textFill="#7f7f7f">
                      <font>
                         <Font name="Cambria Bold" size="36.0" />
                      </font>
                   </Label>
                   <Pane prefHeight="50.0" prefWidth="11.0" />
-                  <Label alignment="BASELINE_LEFT" style="-fx-text-fill: #8e4141;" text="System" textFill="#8e4141">
+                  <Label alignment="BASELINE_LEFT" style="-fx-text-fill: #8e4141;" text="Store" textFill="#8e4141">
                      <font>
                         <Font name="Cambria" size="36.0" />
                      </font>
@@ -43,14 +43,17 @@
                   <Insets top="20.0" />
                </padding>
             </HBox>
-            <VBox fillWidth="false" layoutX="27.0" layoutY="89.0" prefHeight="449.0" prefWidth="234.0">
+            <VBox fillWidth="false" layoutX="25.0" layoutY="90.0" prefHeight="449.0" prefWidth="234.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="220.0" styleClass="navigation">
+                  <HBox fx:id="dashboard" alignment="CENTER_LEFT" onMouseClicked="#switchToDashboard" prefHeight="45.0" prefWidth="234.0" styleClass="navigation">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/dashboard.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
                         </ImageView>
                         <Text fx:id="text_dashboard" fill="WHITE" onMouseClicked="#switchToDashboard" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD">
                            <HBox.margin>
@@ -62,12 +65,15 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="60.0" prefHeight="45.0" prefWidth="220.0">
+                  <HBox fx:id="inventory" alignment="CENTER_LEFT" layoutX="10.0" layoutY="60.0" onMouseClicked="#switchToInventory" prefHeight="45.0" prefWidth="234.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/inventory.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
                         </ImageView>
                         <Text fx:id="text_inventory" fill="WHITE" onMouseClicked="#switchToInventory" strokeType="OUTSIDE" strokeWidth="0.0" text="INVENTORY">
                            <HBox.margin>
@@ -79,12 +85,15 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="105.0" prefHeight="45.0" prefWidth="220.0">
+                  <HBox fx:id="product" alignment="CENTER_LEFT" layoutX="10.0" layoutY="105.0" onMouseClicked="#switchToProduct" prefHeight="45.0" prefWidth="234.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/product.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
                         </ImageView>
                         <Text fx:id="text_product" fill="WHITE" onMouseClicked="#switchToProduct" strokeType="OUTSIDE" strokeWidth="0.0" text="PRODUCT">
                            <HBox.margin>
@@ -96,29 +105,15 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="150.0" prefHeight="45.0" prefWidth="220.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="45.0" prefWidth="234.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/supplier.png" />
                            </image>
-                        </ImageView>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MEMBERSHIP">
                            <HBox.margin>
-                              <Insets left="10.0" />
+                              <Insets left="25.0" />
                            </HBox.margin>
-                           <font>
-                              <Font name="Russo One" size="15.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="45.0" prefWidth="220.0">
-                     <children>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/pie-chart.png" />
-                           </image>
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SUPPLIER">
                            <HBox.margin>
@@ -130,12 +125,35 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="220.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="150.0" prefHeight="45.0" prefWidth="234.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/member.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MEMBERSHIP">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Russo One" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="234.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/account.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ACCOUNT">
                            <HBox.margin>
@@ -147,12 +165,15 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="240.0" prefHeight="45.0" prefWidth="220.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="240.0" prefHeight="45.0" prefWidth="234.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/settings.png" />
                            </image>
+                           <HBox.margin>
+                              <Insets left="25.0" />
+                           </HBox.margin>
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTING">
                            <HBox.margin>
@@ -173,7 +194,7 @@
                   <String fx:value="theme" />
                </styleClass>
                <padding>
-                  <Insets left="25.0" right="25.0" top="15.0" />
+                  <Insets top="25.0" />
                </padding>
             </VBox>
             <Label layoutX="25.0" layoutY="770.0" prefHeight="16.0" prefWidth="79.0" styleClass="label-info-color" text="JEBS.Co.Ltd.Inc">
@@ -205,7 +226,7 @@
       </Text>
       <AnchorPane fx:id="subpage" layoutX="286.0" layoutY="70.0" prefHeight="730.0" prefWidth="995.0" />
       <Label layoutX="310.0" layoutY="40.0" styleClass="label-info-color" text="Administrator" />
-      <Label layoutX="310.0" layoutY="20.0" styleClass="label-info-color" text="Edmond">
+      <Label layoutX="310.0" layoutY="20.0" styleClass="label-info-color" text="Bimaya">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
