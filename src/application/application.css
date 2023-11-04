@@ -36,3 +36,6 @@
     -fx-font-size: 12px; /* 设置字体大小 */
     -fx-text-fill: #454d66; /* 设置字体颜色 */
 }
+.hbox-hover:hover {
+    -fx-background-color: #66CCFF; /* Change to your desired color */
+}

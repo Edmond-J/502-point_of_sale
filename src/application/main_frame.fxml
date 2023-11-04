@@ -44,12 +44,12 @@
                </padding>
             </HBox>
             <VBox fillWidth="false" layoutX="27.0" layoutY="89.0" prefHeight="449.0" prefWidth="234.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="220.0" styleClass="navigation">
+               <children >
+                  <HBox alignment="CENTER_LEFT"  prefHeight="45.0" prefWidth="220.0" styleClass="navigation">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/home.png" />
                            </image>
                         </ImageView>
                         <Text fx:id="text_dashboard" fill="WHITE" onMouseClicked="#switchToDashboard" strokeType="OUTSIDE" strokeWidth="0.0" text="DASHBOARD">
@@ -62,11 +62,11 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="60.0" prefHeight="45.0" prefWidth="220.0">
+                  <HBox alignment="CENTER_LEFT" styleClass="hbox-hover" layoutX="10.0" layoutY="60.0" prefHeight="45.0" prefWidth="220.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/dashboards.png" />
                            </image>
                         </ImageView>
                         <Text fx:id="text_inventory" fill="WHITE" onMouseClicked="#switchToInventory" strokeType="OUTSIDE" strokeWidth="0.0" text="INVENTORY">
@@ -79,11 +79,11 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="105.0" prefHeight="45.0" prefWidth="220.0">
+                  <HBox alignment="CENTER_LEFT" styleClass="hbox-hover" layoutX="10.0" layoutY="105.0" prefHeight="45.0" prefWidth="220.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/product.png" />
                            </image>
                         </ImageView>
                         <Text fx:id="text_product" fill="WHITE" onMouseClicked="#switchToProduct" strokeType="OUTSIDE" strokeWidth="0.0" text="PRODUCT">
@@ -96,11 +96,11 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="150.0" prefHeight="45.0" prefWidth="220.0">
+                  <HBox alignment="CENTER_LEFT" styleClass="hbox-hover" layoutX="10.0" layoutY="150.0" prefHeight="45.0" prefWidth="220.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/member.png" />
                            </image>
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="MEMBERSHIP">
@@ -113,11 +113,11 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="195.0" prefHeight="45.0" prefWidth="220.0">
+                  <HBox alignment="CENTER_LEFT" styleClass="hbox-hover" layoutX="10.0" layoutY="195.0" prefHeight="45.0" prefWidth="220.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/supplier.png" />
                            </image>
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SUPPLIER">
@@ -130,11 +130,11 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="220.0">
+                  <HBox alignment="CENTER_LEFT" styleClass="hbox-hover" prefHeight="45.0" prefWidth="220.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/manage.png" />
                            </image>
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ACCOUNT">
@@ -147,11 +147,11 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="240.0" prefHeight="45.0" prefWidth="220.0">
+                  <HBox  fx:id="hbox1"  styleClass="hbox-hover" alignment="CENTER_LEFT" layoutX="10.0" layoutY="240.0" prefHeight="45.0" prefWidth="220.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/pie-chart.png" />
+                              <Image url="@../img/settings.png" />
                            </image>
                         </ImageView>
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SETTING">

@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class PoS_Main extends Application implements Initializable {
@@ -28,7 +29,7 @@ public class PoS_Main extends Application implements Initializable {
 	ArrayList<Product> productsList = new ArrayList<Product>();
 	ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
 	ArrayList<Supplier> supplierList = new ArrayList<Supplier>();
-
+    HBox hbox; 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		FXMLLoader loader1 = new FXMLLoader(getClass().getResource("tab_dashboard.fxml"));
@@ -92,7 +93,7 @@ public class PoS_Main extends Application implements Initializable {
 		currentTab = text;
 		currentTab.setStyle("-fx-fill:#dad873;");
 	}
-
+   
 	public static void main(String[] args) {
 		launch(args);
 	}
