@@ -40,6 +40,8 @@ public class PoS_Main extends Application implements Initializable {
 
 	public PoS_Main() {
 		System.out.println("main constructor");// why the constructor is executed twice?
+		System.out.println("main constructor");// why the constructor is executed twice?
+		//changed in 6.11
 	}
 
 	@Override
