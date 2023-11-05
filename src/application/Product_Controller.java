@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -54,11 +55,13 @@ public class Product_Controller implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		System.out.println("Product_controller initialize "+col_name);
 //		supplierList.add(new Supplier(100, "Green NZ", "14 karori road wellington", 270852547, "greennz@gmail.com"));
 //		
 	}
 
 	public Product_Controller() {
+		System.out.println("Product_controller constructor "+col_name);
 	}
 
 	public void setMainController(PoS_Main controller) {
@@ -187,6 +190,18 @@ public class Product_Controller implements Initializable {
 			sc.close();
 		} catch (IOException e) {
 			System.out.println(("Error: "+e));
+		}
+	}
+
+	@FXML
+	private void deleteProduct() {
+		TableViewSelectionModel<Product> selected = productsTableView.getSelectionModel();
+		ObservableList<Product> selectedItems = selected.getSelectedItems();
+		if (!selectedItems.isEmpty()) {
+			Product toDelet = selectedItems.get(0);
+			mainController.productsList.remove(toDelet);
+			mainController.csvBase.delete(toDelet);
+			productOBList.remove(toDelet);
 		}
 	}
 

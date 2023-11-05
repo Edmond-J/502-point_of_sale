@@ -8,7 +8,8 @@
 }
 
 .button:hover{
-   -fx-background-color: gray;
+   -fx-background-color: #dad873;
+   -fx-text-fill: gray;
 }
 
 .text-field {
@@ -54,7 +55,12 @@
     -fx-background-color: #dad873;
     -fx-border-color: #dad873
 }
-
+.button-round{
+	-fx-background-color: rgba(0.0,0.0,0.0,0.0);
+	-fx-background-radius: 40.0;
+	-fx-pref-height: 40.0;
+	-fx-font-weight: bold;
+}
 .theme{
 	-fx-background-color:#309975
 	}

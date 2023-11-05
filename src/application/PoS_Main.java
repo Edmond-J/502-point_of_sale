@@ -33,25 +33,40 @@ public class PoS_Main extends Application implements Initializable {
 	Dashboard_Controller dashCon;
 	Product_Controller prodCon;
 	Inventory_Controller inveCon;
+	Database csvBase;
 	ArrayList<Product> productsList = new ArrayList<Product>();
 	ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
 	ArrayList<Supplier> supplierList = new ArrayList<Supplier>();
 
+	public PoS_Main() {
+		System.out.println("main constructor");//why the constructor is executed twice?
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			csvBase=new Database("data/");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		FXMLLoader loader1 = new FXMLLoader(getClass().getResource("tab_dashboard.fxml"));
+		System.out.println("Main init: FXMLLoader loader1 "+loader1.toString());
 		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("tab_product.fxml"));
 		FXMLLoader loader3 = new FXMLLoader(getClass().getResource("tab_inventory.fxml"));
 		try {
 			loadData();
 			sceneDash = loader1.load();
+			System.out.println("Main init:sceneDash "+sceneDash.toString());
 			sceneProd = loader2.load();
 			sceneProd.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneIven = loader3.load();
 			dashCon = loader1.getController();
+			System.out.println("Main init: dashCon "+dashCon.toString());
 			prodCon = loader2.getController();
 			inveCon = loader3.getController();
 			prodCon.setMainController(this);
+			System.out.println("Main init: set main controller");
 			inveCon.setMainController(this);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -64,6 +79,7 @@ public class PoS_Main extends Application implements Initializable {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("main_frame.fxml"));
+			System.out.println("Main start:root "+root.toString());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("PoS System");
@@ -115,10 +131,7 @@ public class PoS_Main extends Application implements Initializable {
 				String unit = csvRecord.get("UNIT");
 				String brand = csvRecord.get("BRAND");
 				String category = csvRecord.get("CATEGORY");
-				// Handle the case where the "Age" column is empty
-				// Create a Person object
 				Product product = new Product(name, itemCode, price, unit, brand, category);
-				// Do something with the person object
 				productsList.add(product);
 			}
 		} catch (IOException e) {

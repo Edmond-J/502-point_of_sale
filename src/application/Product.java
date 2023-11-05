@@ -32,7 +32,6 @@ public class Product {
 
 	public void saveToFile() throws IOException {
 		File file = new File("data/db_ products.csv");
-		System.out.println(file.exists());
 		FileWriter fileWriter = new FileWriter(file, true);
 		CSVPrinter csvPrinter;
 		if (!file.exists()) {
