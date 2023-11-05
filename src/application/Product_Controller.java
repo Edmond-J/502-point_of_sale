@@ -32,37 +32,32 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 
 public class Product_Controller implements Initializable {
-	PoS_Main mainController;
-	ObservableList<Product> productOBList;
+	private PoS_Main mainController;
+	private ObservableList<Product> productOBList;
 	@FXML
-	TextField search_box;
+	private TextField search_box;
 	@FXML
-	Text import_result;
+	private Text import_result;
 	@FXML
-	TableView<Product> productsTableView;
+	private TableView<Product> productsTableView;
 	@FXML
-	TableColumn<Product, String> col_name;
+	private TableColumn<Product, String> col_name;
 	@FXML
-	TableColumn<Product, Integer> col_itemcode;
+	private TableColumn<Product, Integer> col_itemcode;
 	@FXML
-	TableColumn<Product, String> col_category;
+	private TableColumn<Product, String> col_category;
 	@FXML
-	TableColumn<Product, Double> col_price;
+	private TableColumn<Product, Double> col_price;
 	@FXML
-	TableColumn<Product, String> col_unit;
+	private TableColumn<Product, String> col_unit;
 	@FXML
-	TableColumn<Product, String> col_brand;
+	private TableColumn<Product, String> col_brand;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("Product_controller initialize "+col_name);
 //		supplierList.add(new Supplier(100, "Green NZ", "14 karori road wellington", 270852547, "greennz@gmail.com"));
-//		
 	}
 
-	public Product_Controller() {
-		System.out.println("Product_controller constructor "+col_name);
-	}
 
 	public void setMainController(PoS_Main controller) {
 		mainController = controller;
@@ -200,7 +195,7 @@ public class Product_Controller implements Initializable {
 		if (!selectedItems.isEmpty()) {
 			Product toDelet = selectedItems.get(0);
 			mainController.productsList.remove(toDelet);
-			mainController.csvBase.delete(toDelet);
+			mainController.getCsvBase().delete(toDelet);
 			productOBList.remove(toDelet);
 		}
 	}
@@ -216,6 +211,6 @@ public class Product_Controller implements Initializable {
 			}
 			productOBList.clear();
 			updateTableView(searchResult);
-		}
+		}else updateTableView(mainController.productsList);
 	}
 }

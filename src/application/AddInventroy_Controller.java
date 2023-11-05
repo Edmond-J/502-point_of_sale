@@ -14,13 +14,13 @@ import javafx.stage.Stage;
 
 public class AddInventroy_Controller implements Initializable {
 	@FXML
-	TextField name, code, price, brand, weight;
+	private TextField name, code, price, brand, weight;
 	@FXML
-	ComboBox<String> supplier;
+	private ComboBox<String> supplier;
 	@FXML
-	TextArea description;
+	private TextArea description;
 	@FXML
-	DatePicker exp_date;
+	private DatePicker exp_date;
 
 
 	@Override

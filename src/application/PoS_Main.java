@@ -17,37 +17,36 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 public class PoS_Main extends Application implements Initializable {
 	@FXML
-	AnchorPane subpage;
+	private AnchorPane subpage;
+//	@FXML
+//	private HBox dashboard, inventory, product;
 	@FXML
-	HBox dashboard, inventory, product;
-	@FXML
-	Text page_title, text_dashboard, text_product, text_inventory;
-	Parent sceneDash, sceneProd, sceneIven;
-	Text currentTab;
-	Dashboard_Controller dashCon;
-	Product_Controller prodCon;
-	Inventory_Controller inveCon;
-	Database csvBase;
+	private Text page_title, text_dashboard, text_product, text_inventory;
+	private Parent sceneDash, sceneProd, sceneIven;
+	private Text currentTab;
+	private Dashboard_Controller dashCon;
+	private Product_Controller prodCon;
+	private Inventory_Controller inveCon;
+	private Database csvBase;
 	ArrayList<Product> productsList = new ArrayList<Product>();
 	ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
 	ArrayList<Supplier> supplierList = new ArrayList<Supplier>();
 
 	public PoS_Main() {
-		System.out.println("main constructor");//why the constructor is executed twice?
+		System.out.println("main constructor");// why the constructor is executed twice?
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			csvBase=new Database("data/");
+			csvBase = new Database("data/");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		FXMLLoader loader1 = new FXMLLoader(getClass().getResource("tab_dashboard.fxml"));
@@ -83,6 +82,7 @@ public class PoS_Main extends Application implements Initializable {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("PoS System");
+			primaryStage.getIcons().add(new Image("img/point-of-service.png"));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
@@ -137,6 +137,14 @@ public class PoS_Main extends Application implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public Database getCsvBase() {
+		return csvBase;
+	}
+
+	public ArrayList<Product> getProductsList() {
+		return productsList;
 	}
 
 	public static void main(String[] args) {

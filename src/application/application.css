@@ -9,7 +9,7 @@
 
 .button:hover{
    -fx-background-color: #dad873;
-   -fx-text-fill: gray;
+   -fx-text-fill: #454d66;
 }
 
 .text-field {
@@ -51,10 +51,6 @@
     -fx-text-fill: white; /* 设置选中项的字体颜色为白色 */
 }
 
-.table-row-cell:selected {
-    -fx-background-color: #dad873;
-    -fx-border-color: #dad873
-}
 .button-round{
 	-fx-background-color: rgba(0.0,0.0,0.0,0.0);
 	-fx-background-radius: 40.0;

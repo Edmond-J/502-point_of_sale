@@ -1,7 +1,6 @@
 package application;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -14,9 +13,9 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 public class Database {
-	String path;
-	FileWriter prodWriter;
-	CSVPrinter prodPrinter;
+	private String path;
+//	FileWriter prodWriter;
+//	CSVPrinter prodPrinter;
 
 	public Database(String filePath) throws IOException {
 		path = filePath;

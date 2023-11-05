@@ -1,3 +1,5 @@
 NAME,ITEM CODE,PRICE,UNIT,BRAND,CATEGORY
 banana,105236,3.29,PCS,Dole,Fruit
+apple,106115,4.99,KG,null,Fruit
 tomato,154856,6.99,KG,null,Vegetables
+qwe,2332,12.0,BOX,,Vegetables

@@ -11,7 +11,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/Project/Eclipse-SwDev/217-PoS/lib/commons-csv-1.10.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-csv-1.10.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

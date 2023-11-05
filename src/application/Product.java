@@ -11,12 +11,12 @@ import org.apache.commons.csv.CSVPrinter;
  * This class is to describe a product
  */
 public class Product {
-	String name;
-	int itemCode;
-	double price;
-	String unit;
-	String brand;
-	String category;
+	private String name;
+	private int itemCode;
+	private double price;
+	private String unit;
+	private String brand;
+	private String category;
 
 	public Product() {
 	}

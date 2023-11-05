@@ -226,7 +226,7 @@
       </Text>
       <AnchorPane fx:id="subpage" layoutX="286.0" layoutY="70.0" prefHeight="730.0" prefWidth="995.0" />
       <Label layoutX="310.0" layoutY="40.0" styleClass="label-info-color" text="Administrator" />
-      <Label layoutX="310.0" layoutY="20.0" styleClass="label-info-color" text="Bimaya">
+      <Label layoutX="310.0" layoutY="20.0" styleClass="label-info-color" text="UserName">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
