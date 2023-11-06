@@ -64,6 +64,7 @@ public class PoS_Main extends Application implements Initializable {
 			System.out.println("Main init: dashCon "+dashCon.toString());
 			prodCon = loader2.getController();
 			inveCon = loader3.getController();
+			dashCon.setMainController(this);
 			prodCon.setMainController(this);
 			System.out.println("Main init: set main controller");
 			inveCon.setMainController(this);
