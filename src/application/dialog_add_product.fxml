@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #454d66;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddProduct_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #454d66;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddSKUController">
    <children>
       <Text fx:id="name_title" fill="WHITE" layoutX="48.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name*" />
       <Text fx:id="code_title" fill="WHITE" layoutX="290.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" />

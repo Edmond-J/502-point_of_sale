@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class AddProduct_Controller implements Initializable {
+public class AddSKUController implements Initializable {
 	@FXML
 	TextField name, code, price, brand;
 	@FXML
@@ -27,9 +27,6 @@ public class AddProduct_Controller implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		unit.getItems().addAll("BAG", "BOX", "KG", "PCS", "TRAY");
 		category.getItems().addAll("Fruits", "Vegetables", "Groceries");
-	}
-
-	public AddProduct_Controller() {
 	}
 
 	public void addProduct(ArrayList<Product> productsList) throws IOException {
@@ -121,14 +118,4 @@ public class AddProduct_Controller implements Initializable {
 		// get the object of the current windows from the elements in it.
 		stage.close();
 	}
-	/**
-	 * check the validity of all input fields.Set the invalid fields with red text.
-	 * @return True if every fields is valid. False if any of the fields is invalid.
-	 */
-//	public boolean checkValidity() {
-//		if (price.getText().contains("a")) {
-//			return false;
-//		}
-//		return true;
-//	}
 }

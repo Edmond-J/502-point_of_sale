@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -30,20 +31,16 @@ public class PoS_Main extends Application implements Initializable {
 	private Text page_title, text_dashboard, text_product, text_inventory;
 	private Parent sceneDash, sceneProd, sceneIven;
 	private Text currentTab;
-	private Dashboard_Controller dashCon;
-	private Product_Controller prodCon;
-	private Inventory_Controller inveCon;
+	private DashboardController dashCon;
+	private ProductController prodCon;
+	private InventoryController inveCon;
 	private Database csvBase;
-	ArrayList<Product> productsList = new ArrayList<Product>();
-	ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
-	ArrayList<Supplier> supplierList = new ArrayList<Supplier>();
-
-	public PoS_Main() {
-		System.out.println("main constructor");// why the constructor is executed twice?
-		System.out.println("main constructor");// why the constructor is executed twice?
-		//changed in 6.11
-		//changed by edmond
-	}
+	private ArrayList<Product> productsList = new ArrayList<Product>();
+	private ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
+	private ArrayList<Supplier> supplierList = new ArrayList<Supplier>();
+//	public PoS_Main() {
+//		System.out.println("main constructor");// why the constructor is executed twice?
+//	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -57,7 +54,7 @@ public class PoS_Main extends Application implements Initializable {
 		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("tab_product.fxml"));
 		FXMLLoader loader3 = new FXMLLoader(getClass().getResource("tab_inventory.fxml"));
 		try {
-			loadData();
+			productsList = loadProductData();
 			sceneDash = loader1.load();
 			System.out.println("Main init:sceneDash "+sceneDash.toString());
 			sceneProd = loader2.load();
@@ -123,8 +120,12 @@ public class PoS_Main extends Application implements Initializable {
 		currentTab.getParent().setStyle("-fx-background-color:#454d66");
 	}
 
-	private void loadData() {
-		try (FileReader fileReader = new FileReader("data/db_ products.csv");
+	public ArrayList<Product> loadProductData() {
+		ArrayList<Product> PDList = new ArrayList<Product>();
+		File db = new File("data/db_ products.csv");
+		if (!db.exists())
+			return PDList;
+		try (FileReader fileReader = new FileReader(db);
 				CSVParser csvParser = new CSVParser(fileReader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
 			for (CSVRecord csvRecord : csvParser) {
 				// Get values from CSV columns
@@ -135,19 +136,40 @@ public class PoS_Main extends Application implements Initializable {
 				String brand = csvRecord.get("BRAND");
 				String category = csvRecord.get("CATEGORY");
 				Product product = new Product(name, itemCode, price, unit, brand, category);
-				productsList.add(product);
+				PDList.add(product);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return PDList;
 	}
 
 	public Database getCsvBase() {
 		return csvBase;
 	}
 
+	public ArrayList<Inventory> getInventoryList() {
+		return inventoryList;
+	}
+
+	public void setInventoryList(ArrayList<Inventory> inventoryList) {
+		this.inventoryList = inventoryList;
+	}
+
+	public ArrayList<Supplier> getSupplierList() {
+		return supplierList;
+	}
+
+	public void setSupplierList(ArrayList<Supplier> supplierList) {
+		this.supplierList = supplierList;
+	}
+
 	public ArrayList<Product> getProductsList() {
 		return productsList;
+	}
+
+	public void setProductsList(ArrayList<Product> productsList) {
+		this.productsList = productsList;
 	}
 
 	public static void main(String[] args) {

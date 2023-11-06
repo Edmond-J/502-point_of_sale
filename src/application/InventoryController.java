@@ -13,14 +13,14 @@ import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class Inventory_Controller implements Initializable {
+public class InventoryController implements Initializable {
 	PoS_Main mainController;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
-	public Inventory_Controller() {
-	}
+//	private Inventory_Controller() {
+//	}
 	
 	@FXML
 	private void showAddStockDialog() throws IOException {
@@ -32,10 +32,10 @@ public class Inventory_Controller implements Initializable {
 		subStage.setScene(new Scene(addstockDialog));
 		subStage.setResizable(false);
 		subStage.show();
-		AddInventroy_Controller subController = loader.getController();
+		AddStockController subController = loader.getController();
 		Button applyBtn = (Button)addstockDialog.lookup("#apply_add_product");
 		applyBtn.setOnMouseClicked(e -> {
-			subController.addStock(mainController.inventoryList);
+			subController.addStock(mainController.getInventoryList());
 		});
 	}
 

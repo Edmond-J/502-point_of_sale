@@ -30,19 +30,29 @@ public class Product {
 		this.category = category;
 	}
 
-	public void saveToFile() throws IOException {
+	public void saveToFile() {
 		File file = new File("data/db_ products.csv");
-		FileWriter fileWriter = new FileWriter(file, true);
-		CSVPrinter csvPrinter;
-		if (!file.exists()) {
-			csvPrinter = new CSVPrinter(fileWriter,
-					CSVFormat.DEFAULT.withHeader("NAME", "ITEM", "CODE", "PRICE", "UNIT", "BRAND", "CATEGORY"));
-		} else {
-			csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT);
+		FileWriter fileWriter;
+		try {
+			fileWriter = new FileWriter(file, true);
+			CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT);
+			if (file.length()==0) {//not using file.exists()as condition, because fileWriter = new FileWriter(file, true) will affect
+				csvPrinter.printRecord("NAME", "ITEM CODE", "PRICE", "UNIT", "BRAND", "CATEGORY");
+			}
+			csvPrinter.printRecord(name, itemCode, price, unit, brand, category);
+			csvPrinter.flush();
+			csvPrinter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		csvPrinter.printRecord(name, itemCode, price, unit, brand, category);
-		csvPrinter.flush();
-		csvPrinter.close();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Product) {
+			Product p = (Product)obj;
+			return (this.name.equals(p.name));
+		} else return (this == obj);
 	}
 
 	public void setName(String name) {

@@ -45,7 +45,7 @@
             </HBox>
             <VBox fillWidth="false" layoutX="25.0" layoutY="90.0" prefHeight="449.0" prefWidth="234.0">
                <children>
-                  <HBox fx:id="dashboard" alignment="CENTER_LEFT" onMouseClicked="#switchToDashboard" prefHeight="45.0" prefWidth="234.0" styleClass="navigation">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#switchToDashboard" prefHeight="45.0" prefWidth="234.0" styleClass="navigation">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -65,7 +65,7 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox fx:id="inventory" alignment="CENTER_LEFT" layoutX="10.0" layoutY="60.0" onMouseClicked="#switchToInventory" prefHeight="45.0" prefWidth="234.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="60.0" onMouseClicked="#switchToInventory" prefHeight="45.0" prefWidth="234.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -85,7 +85,7 @@
                         </Text>
                      </children>
                   </HBox>
-                  <HBox fx:id="product" alignment="CENTER_LEFT" layoutX="10.0" layoutY="105.0" onMouseClicked="#switchToProduct" prefHeight="45.0" prefWidth="234.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="105.0" onMouseClicked="#switchToProduct" prefHeight="45.0" prefWidth="234.0">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>

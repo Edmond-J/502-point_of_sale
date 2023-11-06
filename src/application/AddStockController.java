@@ -12,7 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AddInventroy_Controller implements Initializable {
+public class AddStockController implements Initializable {
 	@FXML
 	private TextField name, code, price, brand, weight;
 	@FXML
@@ -21,7 +21,6 @@ public class AddInventroy_Controller implements Initializable {
 	private TextArea description;
 	@FXML
 	private DatePicker exp_date;
-
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -32,12 +31,7 @@ public class AddInventroy_Controller implements Initializable {
 //		}
 	}
 
-	public AddInventroy_Controller() {
-		closeDialog();
-	}
-
 	public void addStock(ArrayList<Inventory> inventoryList) {
-
 	}
 
 	public void closeDialog() {
@@ -45,6 +39,4 @@ public class AddInventroy_Controller implements Initializable {
 		// get the object of the current windows from the elements in it.
 		stage.close();
 	}
-
-
 }

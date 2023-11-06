@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="400.0" minWidth="640.0" prefHeight="730.0" prefWidth="995.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Product_Controller">
+<AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="400.0" minWidth="640.0" prefHeight="730.0" prefWidth="995.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProductController">
    <children>
       <Line endX="1030.0" layoutX="-68.0" layoutY="94.0" opacity="0.2" startX="100.0" AnchorPane.leftAnchor="31.5" AnchorPane.rightAnchor="32.5" />
       <Button layoutX="155.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showImportFileDialog" prefWidth="90.0" text="Import SKU">
@@ -37,10 +37,10 @@
         <columns>
           <TableColumn fx:id="col_itemcode" prefWidth="75.0" text="ITEMCODE" />
           <TableColumn fx:id="col_name" prefWidth="75.0" text="NAME" />
-            <TableColumn fx:id="col_category" prefWidth="75.0" text="CATEGORY" />
             <TableColumn fx:id="col_price" prefWidth="91.0" text="PRICE" />
             <TableColumn fx:id="col_unit" minWidth="0.0" prefWidth="75.0" text="UNIT" />
             <TableColumn fx:id="col_brand" prefWidth="75.0" text="BRAND" />
+            <TableColumn fx:id="col_category" prefWidth="75.0" text="CATEGORY" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -74,11 +74,20 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="498.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#deleteProduct" styleClass="button-round">
+      <Button layoutX="500.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#deleteProduct" styleClass="button-round">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/duplicate.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button layoutX="448.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#syncDatabase" styleClass="button-round">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/return.png" />
                </image>
             </ImageView>
          </graphic>

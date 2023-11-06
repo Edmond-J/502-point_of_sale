@@ -1,11 +1,14 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Testing {
 	Product product;
 	public Testing() throws IOException {
-		testProductSave();
+		File file = new File("data/db_ products.csv");
+		System.out.println(file.exists());
+//		testProductSave();
 	}
 	
 	public void  testProductSave() throws IOException{

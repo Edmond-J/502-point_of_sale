@@ -31,7 +31,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.util.Duration;
 
-public class Product_Controller implements Initializable {
+public class ProductController implements Initializable {
 	private PoS_Main mainController;
 	private ObservableList<Product> productOBList;
 	@FXML
@@ -52,16 +52,18 @@ public class Product_Controller implements Initializable {
 	private TableColumn<Product, String> col_unit;
 	@FXML
 	private TableColumn<Product, String> col_brand;
+//
+//	private ProductController() {
+//	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 //		supplierList.add(new Supplier(100, "Green NZ", "14 karori road wellington", 270852547, "greennz@gmail.com"));
 	}
 
-
 	public void setMainController(PoS_Main controller) {
 		mainController = controller;
-		updateTableView(mainController.productsList);
+		updateTableView(mainController.getProductsList());
 	}
 
 	@FXML
@@ -92,7 +94,7 @@ public class Product_Controller implements Initializable {
 		applyBtn.setOnMouseClicked(e -> {
 			if (!fileAddress.getText().isEmpty()) {
 				loadSKUFromFile(fileAddress.getText());
-				updateTableView(mainController.productsList);
+				updateTableView(mainController.getProductsList());
 				subStage.close();
 			}
 		});
@@ -112,15 +114,15 @@ public class Product_Controller implements Initializable {
 		subStage.setScene(new Scene(addProductDialog));
 		subStage.setResizable(false);
 		subStage.show();
-		AddProduct_Controller subController = loader.getController();
+		AddSKUController subController = loader.getController();
 		Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
 		applyBtn.setOnMouseClicked(e -> {
 			try {
-				subController.addProduct(mainController.productsList);
+				subController.addProduct(mainController.getProductsList());
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
-			updateTableView(mainController.productsList);
+			updateTableView(mainController.getProductsList());
 		});
 //		Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
 //		cancelBtn.setOnMouseClicked(e -> {
@@ -160,7 +162,7 @@ public class Product_Controller implements Initializable {
 			while (sc.hasNextLine()) {
 				String name = sc.next();
 				boolean isUnique = true;
-				for (Product p : mainController.productsList) {
+				for (Product p : mainController.getProductsList()) {
 					if (p.getName().equals(name)) {
 						sc.nextLine();
 						duplicate++;
@@ -170,22 +172,48 @@ public class Product_Controller implements Initializable {
 				}
 				if (isUnique) {
 					Product product = new Product(name, sc.nextInt(), sc.nextDouble(), sc.next(), sc.next(), sc.next());
-					mainController.productsList.add(product);
+					mainController.getProductsList().add(product);
 					product.saveToFile();
 					sc.nextLine();
 					imported++;
 				}
 			}
-			import_result.setText(imported+" SKU imported. "+duplicate+" SKU duplicated.");
-//			System.out.println(imported+" SKU imported. "+duplicate+" SKU duplicated.");
-			FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), import_result);
-			fadeOut.setFromValue(1.0);
-			fadeOut.setToValue(0.0);
-			fadeOut.play();
+			setPopupMessage(imported+" SKU imported. "+duplicate+" SKU duplicated.");
 			sc.close();
 		} catch (IOException e) {
 			System.out.println(("Error: "+e));
 		}
+	}
+
+	public void setPopupMessage(String message) {
+		import_result.setText(message);
+//		System.out.println(imported+" SKU imported. "+duplicate+" SKU duplicated.");
+		FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), import_result);
+		fadeOut.setFromValue(1.0);
+		fadeOut.setToValue(0.0);
+		fadeOut.play();
+	}
+
+	@FXML
+	private void syncDatabase() {
+		File file = new File("data/db_ products.csv");
+		ArrayList<Product> productsInDB = mainController.loadProductData();
+		int difference = productsInDB.size()-mainController.getProductsList().size();
+		if (file.exists()) {
+			for (Product p : productsInDB) {
+				if (!mainController.getProductsList().contains(p))
+					mainController.getProductsList().add(p);
+			}
+			productOBList.clear();
+			updateTableView(mainController.getProductsList());
+			file.delete();
+			if (difference > 0)
+				setPopupMessage(difference+" items loaded from database");
+			else setPopupMessage((-difference)+" items saved to database");
+		}else setPopupMessage((-difference)+" items saved to database");
+		
+		for (Product p : mainController.getProductsList())
+			p.saveToFile();
 	}
 
 	@FXML
@@ -194,7 +222,7 @@ public class Product_Controller implements Initializable {
 		ObservableList<Product> selectedItems = selected.getSelectedItems();
 		if (!selectedItems.isEmpty()) {
 			Product toDelet = selectedItems.get(0);
-			mainController.productsList.remove(toDelet);
+			mainController.getProductsList().remove(toDelet);
 			mainController.getCsvBase().delete(toDelet);
 			productOBList.remove(toDelet);
 		}
@@ -204,13 +232,13 @@ public class Product_Controller implements Initializable {
 	private void searchProduct() {
 		if (!search_box.getText().isEmpty()) {
 			ArrayList<Product> searchResult = new ArrayList<Product>();
-			for (Product p : mainController.productsList) {
+			for (Product p : mainController.getProductsList()) {
 				if (p.getName().contains(search_box.getText())) {
 					searchResult.add(p);
 				}
 			}
 			productOBList.clear();
 			updateTableView(searchResult);
-		}else updateTableView(mainController.productsList);
+		} else updateTableView(mainController.getProductsList());
 	}
 }
