@@ -30,8 +30,8 @@ public class Dashboard_Controller implements Initializable {
 	
 	public void showBarChart() {
 		//Add data to bar chart
-		final NumberAxis yAxis = new NumberAxis();//定义一个数字轴起名为y轴
-        final CategoryAxis xAxis = new CategoryAxis();//定义一个分类轴起名为x轴
+		final NumberAxis yAxis = new NumberAxis();
+        final CategoryAxis xAxis = new CategoryAxis();
         xAxis.setLabel("Date");
         yAxis.setLabel("Orders");
         XYChart.Series series1 = new XYChart.Series();
