@@ -17,7 +17,6 @@ public class Testing {
 	public Testing() {
 //		File file = new File("data/db_ products.csv");
 //		System.out.println(file.exists());
-		testCheckItemCode();
 //		testProductSave();
 	}
 	
@@ -31,24 +30,7 @@ public class Testing {
 		controller = loader.getController();
 	}
 	
-	void testCheckItemCode() {
-		AnchorPane pane;
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_add_product.fxml"));
-		System.out.println(loader.toString());
-//		System.out.println(controller.toString());
-		try {
-//			System.out.println("pane"+pane.toString());
-			pane=loader.load();
-			System.out.println("pane"+pane.toString());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-//		Product product=new Product();
-		controller = loader.getController();
-		System.out.println(controller.toString());
-//		controller.getCode_title().setText("11");
-//		assertTrue(controller.checkItemCode(mockData, product));
-	}
+	
 	
 	public static void main(String[] args) throws IOException {
 		new Testing();

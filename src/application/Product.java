@@ -31,7 +31,7 @@ public class Product {
 	}
 
 	public void saveToFile() {
-		File file = new File("data/db_ products.csv");
+		File file = new File("data/db_products.csv/");
 		FileWriter fileWriter;
 		try {
 			fileWriter = new FileWriter(file, true);

@@ -13,7 +13,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.CSVRecord;
 
 public class Database {
-	private String path;
+	public String path;
 //	FileWriter prodWriter;
 //	CSVPrinter prodPrinter;
 
@@ -23,7 +23,7 @@ public class Database {
 
 	public void delete(Product product) {
 		try {
-			String filePath = path+"db_ products.csv";
+			String filePath = path+"db_products.csv";
 			CSVParser csvParser = CSVParser.parse(new File(filePath), StandardCharsets.UTF_8,
 					CSVFormat.DEFAULT.withHeader());
 			List<CSVRecord> records = new ArrayList<>();

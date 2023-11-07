@@ -38,6 +38,7 @@ public class PoS_Main extends Application implements Initializable {
 	private ArrayList<Product> productsList = new ArrayList<Product>();
 	private ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
 	private ArrayList<Supplier> supplierList = new ArrayList<Supplier>();
+	private ArrayList<Order> orderList = new ArrayList<Order>();
 //	public PoS_Main() {
 //		System.out.println("main constructor");// why the constructor is executed twice?
 //	}
@@ -54,7 +55,9 @@ public class PoS_Main extends Application implements Initializable {
 		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("tab_product.fxml"));
 		FXMLLoader loader3 = new FXMLLoader(getClass().getResource("tab_inventory.fxml"));
 		try {
-			productsList = loadProductData("data/db_ products.csv");
+			productsList = loadProductData("data/db_products.csv");
+			orderList = loadOrderData("data/db_orders.csv");
+			System.out.println(orderList.size());
 			sceneDash = loader1.load();
 			System.out.println("Main init:sceneDash "+sceneDash.toString());
 			sceneProd = loader2.load();
@@ -67,11 +70,13 @@ public class PoS_Main extends Application implements Initializable {
 			prodCon.setMainController(this);
 			System.out.println("Main init: set main controller");
 			inveCon.setMainController(this);
+			dashCon.setMainController(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		currentTab = text_dashboard;
-		currentTab.setStyle("-fx-fill:#dad873;");
+		switchToDashboard();
+//		currentTab.setStyle("-fx-fill:#dad873;");
 	}
 
 	@Override
@@ -143,6 +148,34 @@ public class PoS_Main extends Application implements Initializable {
 		}
 		return PDList;
 	}
+	
+	public ArrayList<Order> loadOrderData(String dataPath) {
+		ArrayList<Order> orders = new ArrayList<Order>();
+		File db = new File(dataPath);
+		System.out.println(db.exists());
+		if (!db.exists())
+			return orders;
+		try (FileReader fileReader = new FileReader(db);
+				CSVParser csvParser = new CSVParser(fileReader, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+			for (CSVRecord csvRecord : csvParser) {
+				// Get values from CSV columns
+				String date = csvRecord.get("DATE");
+				String time = csvRecord.get("TIME");
+				String productName = csvRecord.get("PRODUCT");
+				double quantity = Double.parseDouble(csvRecord.get("QUANTITY"));
+				Product product=new Product();
+				for(Product p:productsList){
+					if(productName.equals(p.getName()))
+						product=p;
+				}
+				Order order = new Order(date,time,product,quantity);
+				orders.add(order);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return orders;
+	}
 
 	public Database getCsvBase() {
 		return csvBase;
@@ -170,6 +203,14 @@ public class PoS_Main extends Application implements Initializable {
 
 	public void setProductsList(ArrayList<Product> productsList) {
 		this.productsList = productsList;
+	}
+	
+	public ArrayList<Order> getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(ArrayList<Order> orderList) {
+		this.orderList = orderList;
 	}
 
 	public static void main(String[] args) {
