@@ -1,10 +1,9 @@
 NAME,ITEM CODE,PRICE,UNIT,BRAND,CATEGORY
-dd,0,1.0,BAG,,Vegetables
 apple,106115,4.99,KG,null,Fruit
 banana,105236,3.29,PCS,Dole,Fruit
 tomato,154856,6.99,KG,null,Vegetables
 1,105236,3.29,PCS,Dole,Fruit
 2,154856,6.99,KG,null,Vegetables
 4,105236,3.29,PCS,Dole,Fruit
-5,154856,6.99,KG,null,Vegetables
 6,154856,6.99,KG,null,Vegetables
+dfdf,0,12.0,BAG,,Fruits

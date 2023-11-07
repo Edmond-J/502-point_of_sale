@@ -45,6 +45,7 @@ public class Database {
 			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+			
 		}
 	}
 }

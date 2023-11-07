@@ -31,10 +31,22 @@ public class AddSKUController implements Initializable {
 
 	public void addProduct(ArrayList<Product> productsList) throws IOException {
 		error.clear();
-//		Scene scene = (Scene)name.getScene();
-//		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		boolean valid = true;
 		Product product = new Product();
+		valid = checkItemCode(productsList, product);
+		valid = checkName(productsList, product);
+		valid = checkPrice(productsList, product);
+		valid = checkUnit(productsList, product);
+		valid = checkCategory(productsList, product);
+		if (valid) {
+			productsList.add(product);
+			product.saveToFile();
+			closeDialog();
+		}
+	}
+
+	public boolean checkItemCode(ArrayList<Product> productsList, Product product) {
+		boolean valid = true;
 		if (!code.getText().isEmpty()) {
 			if (!code.getText().matches("\\d*")) {
 				code_title.setStyle("-fx-fill: red;");
@@ -57,6 +69,11 @@ public class AddSKUController implements Initializable {
 				}
 			}
 		} else code_title.setStyle("-fx-fill: white;");
+		return valid;
+	}
+
+	public boolean checkName(ArrayList<Product> productsList, Product product) {
+		boolean valid = true;
 		if (name.getText().isEmpty()) {
 //			System.out.print(name_title.toString());
 			name_title.setStyle("-fx-fill: red;");
@@ -78,6 +95,11 @@ public class AddSKUController implements Initializable {
 				name_title.setStyle("-fx-fill: white;");
 			}
 		}
+		return valid;
+	}
+
+	public boolean checkPrice(ArrayList<Product> productsList, Product product) {
+		boolean valid = true;
 		if (price.getText().isEmpty()) {
 			price_title.setStyle("-fx-fill: red;");
 			valid = false;
@@ -90,6 +112,11 @@ public class AddSKUController implements Initializable {
 			product.setPrice(Double.parseDouble(price.getText()));
 			price_title.setStyle("-fx-fill: white;");
 		}
+		return valid;
+	}
+
+	public boolean checkUnit(ArrayList<Product> productsList, Product product) {
+		boolean valid = true;
 		if (unit.getValue() == null) {
 			unit_title.setStyle("-fx-fill: red;");
 			valid = false;
@@ -98,6 +125,11 @@ public class AddSKUController implements Initializable {
 			product.setUnit(unit.getValue());
 			unit_title.setStyle("-fx-fill: white;");
 		}
+		return valid;
+	}
+
+	public boolean checkCategory(ArrayList<Product> productsList, Product product) {
+		boolean valid = true;
 		if (category.getValue() == null) {
 			category_title.setStyle("-fx-fill: red;");
 			valid = false;
@@ -106,11 +138,7 @@ public class AddSKUController implements Initializable {
 			product.setCategory(category.getValue());
 			category_title.setStyle("-fx-fill: white;");
 		}
-		if (valid) {
-			productsList.add(product);
-			product.saveToFile();
-			closeDialog();
-		}
+		return valid;
 	}
 
 	public void closeDialog() {
@@ -118,4 +146,13 @@ public class AddSKUController implements Initializable {
 		// get the object of the current windows from the elements in it.
 		stage.close();
 	}
+
+	public Text getCode_title() {
+		return code_title;
+	}
+
+	public void setCode_title(Text code_title) {
+		this.code_title = code_title;
+	}
+	
 }

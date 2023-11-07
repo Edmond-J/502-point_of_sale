@@ -67,6 +67,32 @@ public class ProductController implements Initializable {
 	}
 
 	@FXML
+		private void showAddProductDialog() throws IOException {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_add_product.fxml"));
+			Parent addProductDialog = loader.load();
+			AddSKUController subController = loader.getController();
+			Stage subStage = new Stage();
+			subStage.initModality(Modality.APPLICATION_MODAL);
+			subStage.setTitle("Add a SKU");
+			subStage.setScene(new Scene(addProductDialog));
+			subStage.setResizable(false);
+			subStage.show();
+			Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
+			applyBtn.setOnMouseClicked(e -> {
+				try {
+					subController.addProduct(mainController.getProductsList());
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				updateTableView(mainController.getProductsList());
+			});
+	//		Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
+	//		cancelBtn.setOnMouseClicked(e -> {
+	//		    subStage.close();
+	//		});
+		}
+
+	@FXML
 	private void showImportFileDialog() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_import.fxml"));
 		Parent importDialog = loader.load();
@@ -102,32 +128,6 @@ public class ProductController implements Initializable {
 		cancelBtn.setOnMouseClicked(e -> {
 			subStage.close();
 		});
-	}
-
-	@FXML
-	private void showAddProductDialog() throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_add_product.fxml"));
-		Parent addProductDialog = loader.load();
-		Stage subStage = new Stage();
-		subStage.initModality(Modality.APPLICATION_MODAL);
-		subStage.setTitle("Add a SKU");
-		subStage.setScene(new Scene(addProductDialog));
-		subStage.setResizable(false);
-		subStage.show();
-		AddSKUController subController = loader.getController();
-		Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
-		applyBtn.setOnMouseClicked(e -> {
-			try {
-				subController.addProduct(mainController.getProductsList());
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-			updateTableView(mainController.getProductsList());
-		});
-//		Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
-//		cancelBtn.setOnMouseClicked(e -> {
-//		    subStage.close();
-//		});
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class ProductController implements Initializable {
 	@FXML
 	private void syncDatabase() {
 		File file = new File("data/db_ products.csv");
-		ArrayList<Product> productsInDB = mainController.loadProductData();
+		ArrayList<Product> productsInDB = mainController.loadProductData(file.getPath());
 		int difference = productsInDB.size()-mainController.getProductsList().size();
 		if (file.exists()) {
 			for (Product p : productsInDB) {

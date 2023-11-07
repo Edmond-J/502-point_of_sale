@@ -54,7 +54,7 @@ public class PoS_Main extends Application implements Initializable {
 		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("tab_product.fxml"));
 		FXMLLoader loader3 = new FXMLLoader(getClass().getResource("tab_inventory.fxml"));
 		try {
-			productsList = loadProductData();
+			productsList = loadProductData("data/db_ products.csv");
 			sceneDash = loader1.load();
 			System.out.println("Main init:sceneDash "+sceneDash.toString());
 			sceneProd = loader2.load();
@@ -120,9 +120,9 @@ public class PoS_Main extends Application implements Initializable {
 		currentTab.getParent().setStyle("-fx-background-color:#454d66");
 	}
 
-	public ArrayList<Product> loadProductData() {
+	public ArrayList<Product> loadProductData(String dataPath) {
 		ArrayList<Product> PDList = new ArrayList<Product>();
-		File db = new File("data/db_ products.csv");
+		File db = new File(dataPath);
 		if (!db.exists())
 			return PDList;
 		try (FileReader fileReader = new FileReader(db);

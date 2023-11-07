@@ -25,7 +25,6 @@ public class AddStockController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		supplier.getItems().add("supplier1");
-		System.out.println();
 //		for (Supplier s : mainController.getSupplierList()) {
 //			supplier.getItems().add(s.name);
 //		}
