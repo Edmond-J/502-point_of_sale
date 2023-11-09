@@ -6,5 +6,5 @@ orange,158452,4.99,KG,null,Fruit
 kiwi fruit,196584,4.99,KG,Zespri,Fruit
 mushroom,148526,10.99,KG,null,Vegetables
 carrot,235458,2.79,KG,null,Vegetables
-dfd,0,2,BOX,,Fruits
-apple2,10611,0.0,BAG,,Vegetables
+/,0,1.0,BAG,,Fruits
+//,0,1.0,BOX,,Vegetables

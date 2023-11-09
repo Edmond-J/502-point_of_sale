@@ -12,9 +12,6 @@ public class Inventory {
 	Date expDate;
 	double inStrck;
 
-	public Inventory() {
-	}
-
 	public Inventory(int barCode, String name, String brand, Supplier supplier, double price, String unit, Date expDate,
 			double inStrck) {
 		this.barCode = barCode;

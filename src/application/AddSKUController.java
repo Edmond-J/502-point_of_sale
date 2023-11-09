@@ -34,15 +34,14 @@ public class AddSKUController implements Initializable {
 //		System.out.println(price.getText());
 //		System.out.println(brand.getText());
 		error.clear();
-		boolean valid = true;
 		Product product = new Product();
 //		System.out.println(name.getText());
-		valid = checkItemCode(productsList, product);
-		valid = valid && checkName(productsList, product);
-		valid = valid && checkPrice(productsList, product);
-		valid = valid && checkUnit(productsList, product);
-		valid = valid && checkCategory(productsList, product);
-		if (valid) {
+		boolean valid1 = checkItemCode(productsList, product);
+		boolean valid2 = checkName(productsList, product);
+		boolean valid3 = checkPrice(productsList, product);
+		boolean valid4 = checkUnit(productsList, product);
+		boolean valid5 = checkCategory(productsList, product);
+		if (valid1 && valid2 && valid3 && valid4 && valid5) {
 			product.setBrand(brand.getText());
 			productsList.add(product);
 			product.saveToFile();
@@ -109,7 +108,7 @@ public class AddSKUController implements Initializable {
 			price_title.setStyle("-fx-fill: red;");
 			valid = false;
 			error.appendText("error: 'price' is mandatory fields\n");
-		} else if (price.getText().matches("[^0-9.]*")) {
+		} else if (!price.getText().matches("[0-9](.?)[0-9]*")) {
 			price_title.setStyle("-fx-fill: red;");
 			valid = false;
 			error.appendText("error: only number and '.' are allowed in 'price'\n");

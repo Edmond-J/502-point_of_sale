@@ -41,20 +41,11 @@ public class ProductController implements Initializable {
 	@FXML
 	private TableView<Product> productsTableView;
 	@FXML
-	private TableColumn<Product, String> col_name;
+	private TableColumn<Product, String> col_name, col_category, col_unit, col_brand;
 	@FXML
 	private TableColumn<Product, Integer> col_itemcode;
 	@FXML
-	private TableColumn<Product, String> col_category;
-	@FXML
 	private TableColumn<Product, Double> col_price;
-	@FXML
-	private TableColumn<Product, String> col_unit;
-	@FXML
-	private TableColumn<Product, String> col_brand;
-//
-//	private ProductController() {
-//	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -67,12 +58,11 @@ public class ProductController implements Initializable {
 	}
 
 	@FXML
-		private void showAddProductDialog() {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_add_product.fxml"));
-			Parent addProductDialog;
-			try {
-				addProductDialog = loader.load();
-
+	private void showAddProductDialog() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_add_product.fxml"));
+		Parent addProductDialog;
+		try {
+			addProductDialog = loader.load();
 			AddSKUController subController = loader.getController();
 			Stage subStage = new Stage();
 			subStage.initModality(Modality.APPLICATION_MODAL);
@@ -85,54 +75,53 @@ public class ProductController implements Initializable {
 				subController.addProduct(mainController.getProductsList());
 				updateTableView(mainController.getProductsList());
 			});
-	//		Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
-	//		cancelBtn.setOnMouseClicked(e -> {
-	//		    subStage.close();
-	//		});
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			// Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
+			// cancelBtn.setOnMouseClicked(e -> {
+			// subStage.close();
+			// });
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+	}
 
 	@FXML
-	private void showImportFileDialog()  {
+	private void showImportFileDialog() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_import.fxml"));
 		Parent importDialog;
 		try {
 			importDialog = loader.load();
-
-		Stage subStage = new Stage();
-		subStage.initModality(Modality.APPLICATION_MODAL);
-		subStage.setTitle("Import SKUs");
-		subStage.setScene(new Scene(importDialog));
-		subStage.setResizable(false);
-		subStage.show();
-		TextField fileAddress = (TextField)importDialog.lookup("#file_address");
+			Stage subStage = new Stage();
+			subStage.initModality(Modality.APPLICATION_MODAL);
+			subStage.setTitle("Import SKUs");
+			subStage.setScene(new Scene(importDialog));
+			subStage.setResizable(false);
+			subStage.show();
+			TextField fileAddress = (TextField)importDialog.lookup("#file_address");
 //		System.out.println(fileAddress.toString());
-		Button browseBtn = (Button)importDialog.lookup("#browse_import");
-		browseBtn.setOnMouseClicked(e -> {
-			FileChooser fileChooser = new FileChooser();
-			fileChooser.setTitle("Open File");
-			fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"),
-					new ExtensionFilter("All Files", "*.*"));
-			Window window = browseBtn.getParent().getScene().getWindow();
+			Button browseBtn = (Button)importDialog.lookup("#browse_import");
+			browseBtn.setOnMouseClicked(e -> {
+				FileChooser fileChooser = new FileChooser();
+				fileChooser.setTitle("Open File");
+				fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"),
+						new ExtensionFilter("All Files", "*.*"));
+				Window window = browseBtn.getParent().getScene().getWindow();
 //			Window window=mainController.sceneProd.getScene().getWindow(); //another way to get the window
-			File selectedFile = fileChooser.showOpenDialog(window);
-			if (selectedFile != null)
-				fileAddress.setText(selectedFile.getPath());
-		});
-		Button applyBtn = (Button)importDialog.lookup("#apply_import");
-		applyBtn.setOnMouseClicked(e -> {
-			if (!fileAddress.getText().isEmpty()) {
-				loadSKUFromFile(fileAddress.getText());
-				updateTableView(mainController.getProductsList());
+				File selectedFile = fileChooser.showOpenDialog(window);
+				if (selectedFile != null)
+					fileAddress.setText(selectedFile.getPath());
+			});
+			Button applyBtn = (Button)importDialog.lookup("#apply_import");
+			applyBtn.setOnMouseClicked(e -> {
+				if (!fileAddress.getText().isEmpty()) {
+					loadSKUFromFile(fileAddress.getText());
+					updateTableView(mainController.getProductsList());
+					subStage.close();
+				}
+			});
+			Button cancelBtn = (Button)importDialog.lookup("#cancel_import");
+			cancelBtn.setOnMouseClicked(e -> {
 				subStage.close();
-			}
-		});
-		Button cancelBtn = (Button)importDialog.lookup("#cancel_import");
-		cancelBtn.setOnMouseClicked(e -> {
-			subStage.close();
-		});
+			});
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -214,11 +203,11 @@ public class ProductController implements Initializable {
 			}
 			productOBList.clear();
 			updateTableView(mainController.getProductsList());
+			file.delete();
 			if (difference > 0)
 				setPopupMessage(difference+" items loaded from database");
 			else setPopupMessage((-difference)+" items saved to database");
-		}else setPopupMessage((-difference)+" items saved to database");
-		
+		} else setPopupMessage((-difference)+" items saved to database");
 		for (Product p : mainController.getProductsList())
 			p.saveToFile();
 	}

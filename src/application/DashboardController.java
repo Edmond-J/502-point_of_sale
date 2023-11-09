@@ -31,6 +31,12 @@ public class DashboardController implements Initializable {
 
 	public void setMainController(PoS_Main controller) {
 		mainController = controller;
+	}
+
+	public void refreshChart() {
+		pie1.getData().clear();
+		bar1.getData().clear();
+		line1.getData().clear();
 		showBarChart();
 		showPieChart();
 		showLineChart();
@@ -58,7 +64,8 @@ public class DashboardController implements Initializable {
 	public void showPieChart() {
 		HashMap<String, Double> skuSaleMap = new HashMap<String, Double>();
 		for (Order order : mainController.getOrderList())
-			skuSaleMap.put(order.getProduct().getName(), order.getTotal());
+//			skuSaleMap.put(order.getProduct().getName(), order.getTotal());
+			skuSaleMap.merge(order.getProduct().getName(), order.getTotal(), (oldValue, newValue) -> oldValue+newValue);
 		List<String> keys = new ArrayList<>(skuSaleMap.keySet());
 		Collections.sort(keys);
 		for (String s : keys) {
@@ -70,7 +77,7 @@ public class DashboardController implements Initializable {
 	public void showLineChart() {
 		HashMap<String, Double> skuSaleMap = new HashMap<String, Double>();
 		for (Order order : mainController.getOrderList()) {
-			skuSaleMap.put(order.getDate(), order.getTotal());
+			skuSaleMap.merge(order.getDate(), order.getTotal(), (oldValue, newValue) -> oldValue+newValue);
 		}
 		List<String> keys = new ArrayList<>(skuSaleMap.keySet());
 		Collections.sort(keys);

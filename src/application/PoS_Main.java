@@ -25,15 +25,13 @@ import javafx.scene.text.Text;
 public class PoS_Main extends Application implements Initializable {
 	@FXML
 	private AnchorPane subpage;
-//	@FXML
-//	private HBox dashboard, inventory, product;
 	@FXML
 	private Text page_title, text_dashboard, text_product, text_inventory;
 	private Parent sceneDash, sceneProd, sceneIven;
-	private Text currentTab;
 	private DashboardController dashCon;
-	private ProductController prodCon;
 	private InventoryController inveCon;
+	private ProductController prodCon;
+	private Text currentTab;
 	private Database csvBase;
 	private ArrayList<Product> productsList = new ArrayList<Product>();
 	private ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
@@ -47,38 +45,33 @@ public class PoS_Main extends Application implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		csvBase = new Database("data/");
 		FXMLLoader loader1 = new FXMLLoader(getClass().getResource("tab_dashboard.fxml"));
-		System.out.println("Main init: FXMLLoader loader1 "+loader1.toString());
-		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("tab_product.fxml"));
-		FXMLLoader loader3 = new FXMLLoader(getClass().getResource("tab_inventory.fxml"));
+		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("tab_inventory.fxml"));
+		FXMLLoader loader3 = new FXMLLoader(getClass().getResource("tab_product.fxml"));
 		try {
 			productsList = loadProductData("data/db_products.csv");
 			orderList = loadOrderData("data/db_orders.csv");
 			sceneDash = loader1.load();
-			System.out.println("Main init:sceneDash "+sceneDash.toString());
-			sceneProd = loader2.load();
+			sceneIven = loader2.load();
+			sceneProd = loader3.load();
+			sceneIven.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			sceneProd.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			sceneIven = loader3.load();
 			dashCon = loader1.getController();
-			System.out.println("Main init: dashCon "+dashCon.toString());
-			prodCon = loader2.getController();
-			inveCon = loader3.getController();
-			prodCon.setMainController(this);
-			System.out.println("Main init: set main controller");
-			inveCon.setMainController(this);
+			inveCon = loader2.getController();
+			prodCon = loader3.getController();
 			dashCon.setMainController(this);
+			inveCon.setMainController(this);
+			prodCon.setMainController(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		currentTab = text_dashboard;
 		switchToDashboard();
-//		currentTab.setStyle("-fx-fill:#dad873;");
 	}
 
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("main_frame.fxml"));
-			System.out.println("Main start:root "+root.toString());
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("PoS System");
@@ -91,6 +84,7 @@ public class PoS_Main extends Application implements Initializable {
 	}
 
 	public void switchToDashboard() {
+		dashCon.refreshChart();
 		subpage.getChildren().clear();
 		subpage.getChildren().add(sceneDash);
 		page_title.setText("Dashboard");
@@ -143,7 +137,7 @@ public class PoS_Main extends Application implements Initializable {
 		}
 		return PDList;
 	}
-	
+
 	public ArrayList<Order> loadOrderData(String dataPath) {
 		ArrayList<Order> orders = new ArrayList<Order>();
 		File db = new File(dataPath);
@@ -157,12 +151,12 @@ public class PoS_Main extends Application implements Initializable {
 				String time = csvRecord.get("TIME");
 				String productName = csvRecord.get("PRODUCT");
 				double quantity = Double.parseDouble(csvRecord.get("QUANTITY"));
-				Product product=new Product();
-				for(Product p:productsList){
-					if(productName.equals(p.getName()))
-						product=p;
+				Product product = new Product();
+				for (Product p : productsList) {
+					if (productName.equals(p.getName()))
+						product = p;
 				}
-				Order order = new Order(date,time,product,quantity);
+				Order order = new Order(date, time, product, quantity);
 				orders.add(order);
 			}
 		} catch (IOException e) {
@@ -198,7 +192,7 @@ public class PoS_Main extends Application implements Initializable {
 	public void setProductsList(ArrayList<Product> productsList) {
 		this.productsList = productsList;
 	}
-	
+
 	public ArrayList<Order> getOrderList() {
 		return orderList;
 	}
