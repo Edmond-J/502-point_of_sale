@@ -1,34 +1,79 @@
+
 .button{
-	-fx-background-color:#3282F6;
+	-fx-background-color: #309975;
+	-fx-text-fill: white;
+	-fx-background-radius: 30.0;
+	-fx-pref-height: 30.0;
+	-fx-font-weight: bold;
 }
 
-.head-bar{
-	-fx-background-color:#383838;
+.button:hover{
+   -fx-background-color: #dad873;
+   -fx-text-fill: #454d66;
+}
+
+.text-field {
+	-fx-background-color: #454d66;
+	-fx-background-radius: 0.0; 
+    -fx-border-color: #58b368;
+    -fx-text-fill: white
+}
+
+.text-field:focused{
+	-fx-border-color: #efeeb4;
+}
+
+.text-area{
+	-fx-control-inner-background: #454d66;
+	-fx-background-radius: 0.0; 
+	-fx-border-color: #58b368;
+	-fx-text-fill: white
+}
+.text-area:focused{
+	-fx-border-color: #efeeb4;
+}
+
+.combo-box{
+	-fx-background-color: #454d66;
+	-fx-background-radius: 0.0; 
+    -fx-border-color: #58b368;
+    -fx-text-fill: white
+}
+.combo-box:focused{
+	-fx-border-color: #efeeb4;
+}
+
+.combo-box .list-cell {
+    -fx-text-fill: black; /* 列表项字体颜色为黑色 */
+}
+
+.combo-box .list-cell:selected {
+    -fx-text-fill: white; /* 设置选中项的字体颜色为白色 */
+}
+
+.button-round{
+	-fx-background-color: rgba(0.0,0.0,0.0,0.0);
+	-fx-background-radius: 40.0;
+	-fx-pref-height: 40.0;
+	-fx-font-weight: bold;
 }
 .theme{
-	-fx-background-color:#51B1B3
+	-fx-background-color:#309975
 	}
 
 .boxes{
-	-fx-background-radius:20;
-}
-.circle{
-	-fx-background-radius: 50;
+	-fx-background-radius: 30.0;
 }
 
-.navigation{
-	-fx-font-family: Tahoma;
-	-fx-font-size: 16;
-}
-.title{
-	-fx-font-family: Tahoma;
-	-fx-font-size: 24;
-}
-.button{
+.button-dark{
 	-fx-background-color: #808080;
 	-fx-text-fill: white;
 }
-.button-bright{
-	-fx-background-color: #51B1B3;
-	-fx-text-fill: white;
+
+.transparent{
+	-fx-background-color: rgba(0.0,0.0,0.0,0.0);
+}
+
+.label-info-color{
+	-fx-text-fill: #454d66
 }

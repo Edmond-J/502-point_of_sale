@@ -1,0 +1,25 @@
+.text{
+	-fx-font-family: Russo One;
+	-fx-font-weight: bold;
+	-fx-font-size:12;
+	-fx-fill: #454d66
+}
+
+.table-cell {
+    -fx-alignment: CENTER;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:even {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:selected {
+    -fx-background-insets: 0, 0, 0;
+    -fx-background-radius: 0, 0, 0;
+    -fx-background-color: #dad873;
+    -fx-border-color: #dad873
+}
