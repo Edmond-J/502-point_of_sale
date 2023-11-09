@@ -37,9 +37,6 @@ public class PoS_Main extends Application implements Initializable {
 	private ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
 	private ArrayList<Supplier> supplierList = new ArrayList<Supplier>();
 	private ArrayList<Order> orderList = new ArrayList<Order>();
-//	public PoS_Main() {
-//		System.out.println("main constructor");// why the constructor is executed twice?
-//	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
