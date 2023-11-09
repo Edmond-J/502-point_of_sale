@@ -1,6 +1,5 @@
 package application;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -29,16 +28,22 @@ public class AddSKUController implements Initializable {
 		category.getItems().addAll("Fruits", "Vegetables", "Groceries");
 	}
 
-	public void addProduct(ArrayList<Product> productsList) throws IOException {
+	public void addProduct(ArrayList<Product> productsList) {
+//		System.out.println(name.getText());
+//		System.out.println(code.getText());
+//		System.out.println(price.getText());
+//		System.out.println(brand.getText());
 		error.clear();
 		boolean valid = true;
 		Product product = new Product();
+//		System.out.println(name.getText());
 		valid = checkItemCode(productsList, product);
-		valid = checkName(productsList, product);
-		valid = checkPrice(productsList, product);
-		valid = checkUnit(productsList, product);
-		valid = checkCategory(productsList, product);
+		valid = valid && checkName(productsList, product);
+		valid = valid && checkPrice(productsList, product);
+		valid = valid && checkUnit(productsList, product);
+		valid = valid && checkCategory(productsList, product);
 		if (valid) {
+			product.setBrand(brand.getText());
 			productsList.add(product);
 			product.saveToFile();
 			closeDialog();
@@ -154,5 +159,4 @@ public class AddSKUController implements Initializable {
 	public void setCode_title(Text code_title) {
 		this.code_title = code_title;
 	}
-	
 }

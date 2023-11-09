@@ -35,8 +35,8 @@
          </effect></Button>
       <TableView fx:id="productsTableView" layoutX="32.0" layoutY="147.0" prefHeight="560.0" prefWidth="931.0" styleClass="transparent" stylesheets="@tableview.css" AnchorPane.bottomAnchor="93.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="147.0">
         <columns>
-          <TableColumn fx:id="col_itemcode" prefWidth="75.0" text="ITEMCODE" />
           <TableColumn fx:id="col_name" prefWidth="75.0" text="NAME" />
+          <TableColumn fx:id="col_itemcode" prefWidth="75.0" text="ITEMCODE" />
             <TableColumn fx:id="col_price" prefWidth="91.0" text="PRICE" />
             <TableColumn fx:id="col_unit" minWidth="0.0" prefWidth="75.0" text="UNIT" />
             <TableColumn fx:id="col_brand" prefWidth="75.0" text="BRAND" />

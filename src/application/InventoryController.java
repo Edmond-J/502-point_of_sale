@@ -15,28 +15,33 @@ import javafx.stage.Stage;
 
 public class InventoryController implements Initializable {
 	PoS_Main mainController;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
 	}
 //	private Inventory_Controller() {
 //	}
-	
+
 	@FXML
-	private void showAddStockDialog() throws IOException {
+	private void showAddStockDialog() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("dialog_add_stock.fxml"));
-		Parent addstockDialog = loader.load();
-		Stage subStage = new Stage();
-		subStage.initModality(Modality.APPLICATION_MODAL);
-		subStage.setTitle("Add a Stock");
-		subStage.setScene(new Scene(addstockDialog));
-		subStage.setResizable(false);
-		subStage.show();
-		AddStockController subController = loader.getController();
-		Button applyBtn = (Button)addstockDialog.lookup("#apply_add_product");
-		applyBtn.setOnMouseClicked(e -> {
-			subController.addStock(mainController.getInventoryList());
-		});
+		Parent addstockDialog;
+		try {
+			addstockDialog = loader.load();
+			Stage subStage = new Stage();
+			subStage.initModality(Modality.APPLICATION_MODAL);
+			subStage.setTitle("Add a Stock");
+			subStage.setScene(new Scene(addstockDialog));
+			subStage.setResizable(false);
+			subStage.show();
+			AddStockController subController = loader.getController();
+			Button applyBtn = (Button)addstockDialog.lookup("#apply_add_stock");
+			applyBtn.setOnMouseClicked(e -> {
+				subController.addStock(mainController.getInventoryList());
+			});
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void setMainController(PoS_Main controller) {

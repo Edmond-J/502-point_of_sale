@@ -17,7 +17,7 @@ public class Database {
 //	FileWriter prodWriter;
 //	CSVPrinter prodPrinter;
 
-	public Database(String filePath) throws IOException {
+	public Database(String filePath) {
 		path = filePath;
 	}
 

@@ -59,7 +59,7 @@ class UnitTestingPoSMain {
 	@Test
 	void testLoadProductData() {
 		ArrayList<Product> productsList = new ArrayList<Product>();
-		productsList = mainController.loadProductData("testing/read only/mockProducts.csv");
+		productsList = mainController.loadProductData("testing/readonly/mockProducts.csv");
 		assertEquals("apple", productsList.get(0).getName());
 		assertEquals("null", productsList.get(0).getBrand());
 		assertEquals(3, productsList.size());
@@ -68,7 +68,13 @@ class UnitTestingPoSMain {
 	@Test
 	void testLoadProductDataNonExist() {
 		ArrayList<Product> productsList = new ArrayList<Product>();
-		productsList = mainController.loadProductData("testing/read only/noExist/mockProducts.csv");
+		productsList = mainController.loadProductData("testing/readonly/noExist/mockProducts.csv");
+		assertEquals(0, productsList.size());
+	}
+	@Test
+	void testLoadProductDataEmpty() {
+		ArrayList<Product> productsList = new ArrayList<Product>();
+		productsList = mainController.loadProductData("testing/readonly/empty.csv");
 		assertEquals(0, productsList.size());
 	}
 
@@ -83,6 +89,5 @@ class UnitTestingPoSMain {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		;
 	}
 }

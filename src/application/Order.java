@@ -4,11 +4,11 @@
 package application;
 
 public class Order {
-	String Date;
-	String time;
-	Product product;
-	double quantity;
-	double total;
+	private String Date;
+	private String time;
+	private Product product;
+	private double quantity;
+	private double total;
 	
 	public Order() {
 	}

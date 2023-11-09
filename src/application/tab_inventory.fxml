@@ -14,7 +14,7 @@
 <AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="400.0" minWidth="640.0" prefHeight="730.0" prefWidth="995.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.InventoryController">
    <children>
       <Line endX="1030.0" layoutX="-68.0" layoutY="94.0" opacity="0.2" startX="100.0" AnchorPane.leftAnchor="31.5" AnchorPane.rightAnchor="32.5" />
-      <Button layoutX="32.0" layoutY="31.0" mnemonicParsing="false" text="+ Inventory">
+      <Button layoutX="32.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showAddStockDialog" text="+ Inventory">
          <effect>
             <DropShadow offsetY="3.0">
                <color>

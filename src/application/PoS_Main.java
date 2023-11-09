@@ -45,11 +45,7 @@ public class PoS_Main extends Application implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		try {
-			csvBase = new Database("data/");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		csvBase = new Database("data/");
 		FXMLLoader loader1 = new FXMLLoader(getClass().getResource("tab_dashboard.fxml"));
 		System.out.println("Main init: FXMLLoader loader1 "+loader1.toString());
 		FXMLLoader loader2 = new FXMLLoader(getClass().getResource("tab_product.fxml"));
@@ -57,7 +53,6 @@ public class PoS_Main extends Application implements Initializable {
 		try {
 			productsList = loadProductData("data/db_products.csv");
 			orderList = loadOrderData("data/db_orders.csv");
-			System.out.println(orderList.size());
 			sceneDash = loader1.load();
 			System.out.println("Main init:sceneDash "+sceneDash.toString());
 			sceneProd = loader2.load();
@@ -152,7 +147,6 @@ public class PoS_Main extends Application implements Initializable {
 	public ArrayList<Order> loadOrderData(String dataPath) {
 		ArrayList<Order> orders = new ArrayList<Order>();
 		File db = new File(dataPath);
-		System.out.println(db.exists());
 		if (!db.exists())
 			return orders;
 		try (FileReader fileReader = new FileReader(db);
