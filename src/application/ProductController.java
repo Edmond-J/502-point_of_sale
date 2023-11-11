@@ -37,7 +37,7 @@ public class ProductController implements Initializable {
 	@FXML
 	private TextField search_box;
 	@FXML
-	private Text import_result;
+	private Text io_message;
 	@FXML
 	private TableView<Product> productsTableView;
 	@FXML
@@ -49,7 +49,6 @@ public class ProductController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		supplierList.add(new Supplier(100, "Green NZ", "14 karori road wellington", 270852547, "greennz@gmail.com"));
 	}
 
 	public void setMainController(PoS_Main controller) {
@@ -183,9 +182,9 @@ public class ProductController implements Initializable {
 	}
 
 	public void setPopupMessage(String message) {
-		import_result.setText(message);
+		io_message.setText(message);
 //		System.out.println(imported+" SKU imported. "+duplicate+" SKU duplicated.");
-		FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), import_result);
+		FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), io_message);
 		fadeOut.setFromValue(1.0);
 		fadeOut.setToValue(0.0);
 		fadeOut.play();

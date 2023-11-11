@@ -14,7 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class InventoryController implements Initializable {
-	PoS_Main mainController;
+	private PoS_Main mainController;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

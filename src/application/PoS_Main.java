@@ -31,7 +31,9 @@ public class PoS_Main extends Application implements Initializable {
 	private DashboardController dashCon;
 	private InventoryController inveCon;
 	private ProductController prodCon;
+	//↑ these controller fields only necessary if the main controller need to operate the component in the sub page.
 	private Text currentTab;
+	//↑ an indicator used for resetting the color of the current tab
 	private Database csvBase;
 	private ArrayList<Product> productsList = new ArrayList<Product>();
 	private ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
@@ -80,7 +82,8 @@ public class PoS_Main extends Application implements Initializable {
 		}
 	}
 
-	public void switchToDashboard() {
+	@FXML
+	private void switchToDashboard() {
 		dashCon.refreshChart();
 		subpage.getChildren().clear();
 		subpage.getChildren().add(sceneDash);
@@ -89,14 +92,16 @@ public class PoS_Main extends Application implements Initializable {
 		textHighlight(text_dashboard);
 	}
 
-	public void switchToInventory() {
+	@FXML
+	private void switchToInventory() {
 		subpage.getChildren().clear();
 		subpage.getChildren().add(sceneIven);
 		page_title.setText("Inventory");
 		textHighlight(text_inventory);
 	}
 
-	public void switchToProduct() {
+	@FXML
+	private void switchToProduct() {
 		subpage.getChildren().clear();
 		subpage.getChildren().add(sceneProd);
 		page_title.setText("Product");

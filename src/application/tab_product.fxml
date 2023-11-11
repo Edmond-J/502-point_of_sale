@@ -52,7 +52,7 @@
             <TextField fx:id="search_box" layoutX="31.0" layoutY="12.0" prefHeight="30.0" prefWidth="173.0" promptText="search by name" style="-fx-background-color: white; -fx-text-fill: #454d66; -fx-border-color: white;" />
          </children>
       </Pane>
-      <Text fx:id="import_result" layoutX="335.0" layoutY="652.0" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #454d66;" textAlignment="CENTER" wrappingWidth="325.3830757141113">
+      <Text fx:id="io_message" layoutX="335.0" layoutY="652.0" opacity="0.6" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #454d66;" textAlignment="CENTER" wrappingWidth="325.3830757141113">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

@@ -12,15 +12,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * This class controls the pop up window of adding a SKU
+ */
 public class AddSKUController implements Initializable {
 	@FXML
-	TextField name, code, price, brand;
+	private TextField name, code, price, brand;
 	@FXML
-	Text name_title, code_title, price_title, unit_title, brand_title, category_title;
+	private Text name_title, code_title, price_title, unit_title, brand_title, category_title;
 	@FXML
-	ComboBox<String> unit, category;
+	private ComboBox<String> unit, category;
 	@FXML
-	TextArea description, error;
+	private TextArea description, error;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -29,18 +32,14 @@ public class AddSKUController implements Initializable {
 	}
 
 	public void addProduct(ArrayList<Product> productsList) {
-//		System.out.println(name.getText());
-//		System.out.println(code.getText());
-//		System.out.println(price.getText());
-//		System.out.println(brand.getText());
 		error.clear();
 		Product product = new Product();
 //		System.out.println(name.getText());
 		boolean valid1 = checkItemCode(productsList, product);
 		boolean valid2 = checkName(productsList, product);
-		boolean valid3 = checkPrice(productsList, product);
-		boolean valid4 = checkUnit(productsList, product);
-		boolean valid5 = checkCategory(productsList, product);
+		boolean valid3 = checkPrice(product);
+		boolean valid4 = checkUnit(product);
+		boolean valid5 = checkCategory(product);
 		if (valid1 && valid2 && valid3 && valid4 && valid5) {
 			product.setBrand(brand.getText());
 			productsList.add(product);
@@ -49,7 +48,13 @@ public class AddSKUController implements Initializable {
 		}
 	}
 
-	public boolean checkItemCode(ArrayList<Product> productsList, Product product) {
+	/**
+	 * 
+	 * @param productsList This method need to check the redundancy of the item code within the existing product list
+	 * @param product If the validity check pass, the input value(item code) will be given to this product.
+	 * @return True if the input item code is valid(blank, or number only).
+	 */
+	private boolean checkItemCode(ArrayList<Product> productsList, Product product) {
 		boolean valid = true;
 		if (!code.getText().isEmpty()) {
 			if (!code.getText().matches("\\d*")) {
@@ -70,13 +75,14 @@ public class AddSKUController implements Initializable {
 				if (!redundant) {
 					product.setItemCode(Integer.parseInt(code.getText()));
 					code_title.setStyle("-fx-fill: white;");
+					// ↑ need to set the label back to white if it's changed to valid value.
 				}
 			}
-		} else code_title.setStyle("-fx-fill: white;");
+		} else code_title.setStyle("-fx-fill: white;");// blank is valid
 		return valid;
 	}
 
-	public boolean checkName(ArrayList<Product> productsList, Product product) {
+	private boolean checkName(ArrayList<Product> productsList, Product product) {
 		boolean valid = true;
 		if (name.getText().isEmpty()) {
 //			System.out.print(name_title.toString());
@@ -102,13 +108,18 @@ public class AddSKUController implements Initializable {
 		return valid;
 	}
 
-	public boolean checkPrice(ArrayList<Product> productsList, Product product) {
+	/**
+	 * 
+	 * @param product
+	 * @return True if the input price is valid("1.0","2","0.99"). False in the other case("d",".1","2.2.","3..2","-2","15d")
+	 */
+	private boolean checkPrice(Product product) {
 		boolean valid = true;
 		if (price.getText().isEmpty()) {
 			price_title.setStyle("-fx-fill: red;");
 			valid = false;
 			error.appendText("error: 'price' is mandatory fields\n");
-		} else if (!price.getText().matches("[0-9](.?)[0-9]*")) {
+		} else if (!price.getText().matches("[0-9](.?)[0-9]*")) {// regular expression
 			price_title.setStyle("-fx-fill: red;");
 			valid = false;
 			error.appendText("error: only number and '.' are allowed in 'price'\n");
@@ -119,7 +130,7 @@ public class AddSKUController implements Initializable {
 		return valid;
 	}
 
-	public boolean checkUnit(ArrayList<Product> productsList, Product product) {
+	private boolean checkUnit(Product product) {
 		boolean valid = true;
 		if (unit.getValue() == null) {
 			unit_title.setStyle("-fx-fill: red;");
@@ -132,7 +143,7 @@ public class AddSKUController implements Initializable {
 		return valid;
 	}
 
-	public boolean checkCategory(ArrayList<Product> productsList, Product product) {
+	private boolean checkCategory(Product product) {
 		boolean valid = true;
 		if (category.getValue() == null) {
 			category_title.setStyle("-fx-fill: red;");
@@ -145,17 +156,16 @@ public class AddSKUController implements Initializable {
 		return valid;
 	}
 
-	public void closeDialog() {
+	@FXML
+	private void closeDialog() {
 		Stage stage = (Stage)name.getScene().getWindow();
 		// get the object of the current windows from the elements in it.
 		stage.close();
 	}
-
-	public Text getCode_title() {
-		return code_title;
-	}
-
-	public void setCode_title(Text code_title) {
-		this.code_title = code_title;
-	}
+//	public Text getCode_title() {
+//		return code_title;
+//	}
+//	public void setCode_title(Text code_title) {
+//		this.code_title = code_title;
+//	}
 }

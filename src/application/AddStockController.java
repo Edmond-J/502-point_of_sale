@@ -11,7 +11,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
+/**
+ * This function is not implemented, but very similar to AddSKUController
+ */
 public class AddStockController implements Initializable {
 	@FXML
 	private TextField name, code, price, brand, weight;
@@ -25,9 +27,6 @@ public class AddStockController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		supplier.getItems().add("supplier1");
-//		for (Supplier s : mainController.getSupplierList()) {
-//			supplier.getItems().add(s.name);
-//		}
 	}
 
 	public void addStock(ArrayList<Inventory> inventoryList) {

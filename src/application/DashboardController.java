@@ -17,7 +17,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 
 public class DashboardController implements Initializable {
-	PoS_Main mainController;
+	private PoS_Main mainController;
 	@FXML
 	private BarChart<String, Number> bar1;
 	@FXML
@@ -33,6 +33,9 @@ public class DashboardController implements Initializable {
 		mainController = controller;
 	}
 
+	/**
+	 * Clear the existing data in each chart and reload the order data.
+	 */
 	public void refreshChart() {
 		pie1.getData().clear();
 		bar1.getData().clear();
@@ -42,7 +45,10 @@ public class DashboardController implements Initializable {
 		showLineChart();
 	}
 
-	public void showBarChart() {
+	/**
+	 * The input value of this chart is still hard coded, it should calculate from the db_order.csv, but not yet.
+	 */
+	private void showBarChart() {
 		// Add data to bar chart
 		final NumberAxis yAxis = new NumberAxis();
 		final CategoryAxis xAxis = new CategoryAxis();
@@ -61,20 +67,27 @@ public class DashboardController implements Initializable {
 		bar1.getData().addAll(series1, series2);
 	}
 
-	public void showPieChart() {
+	/**
+	 * Automatically calculate from the db_order.csv
+	 */
+	private void showPieChart() {
 		HashMap<String, Double> skuSaleMap = new HashMap<String, Double>();
 		for (Order order : mainController.getOrderList())
-//			skuSaleMap.put(order.getProduct().getName(), order.getTotal());
 			skuSaleMap.merge(order.getProduct().getName(), order.getTotal(), (oldValue, newValue) -> oldValue+newValue);
+		// use merge, to add up all the value related with the same key, to avoid the
+		// later record over write the previous record.
 		List<String> keys = new ArrayList<>(skuSaleMap.keySet());
-		Collections.sort(keys);
+		Collections.sort(keys);// sort the keys to let the chart display in order
 		for (String s : keys) {
 			PieChart.Data slice = new PieChart.Data(s, skuSaleMap.get(s));
-			pie1.getData().add(slice);
+			pie1.getData().add(slice);// create new slice and give the slice to the pie chart
 		}
 	}
 
-	public void showLineChart() {
+	/**
+	 * Automatically calculate from the db_order.csv
+	 */
+	private void showLineChart() {
 		HashMap<String, Double> skuSaleMap = new HashMap<String, Double>();
 		for (Order order : mainController.getOrderList()) {
 			skuSaleMap.merge(order.getDate(), order.getTotal(), (oldValue, newValue) -> oldValue+newValue);

@@ -28,11 +28,11 @@ class UnitTestingPoSMain {
 	@BeforeEach
 	void setUp() throws Exception {
 		mainController = new PoS_Main();
-		database = new Database("testing/DataBaseTesting/");
+		database = new Database("testData/DataBaseTesting/");
 	}
 
 	public int isKeyExistInFile(String key, String path) throws IOException {
-		String[] command = { "cmd.exe", "/c", "find /c \""+key+"\" testing/DataBaseTesting/db_products.csv" };
+		String[] command = { "cmd.exe", "/c", "find /c \""+key+"\" testData/DataBaseTesting/db_products.csv" };
 //		String command = "find /c \""+key+"\" "+path;
 		ProcessBuilder processBuilder = new ProcessBuilder(command);
 		processBuilder.redirectErrorStream(true);
@@ -59,7 +59,7 @@ class UnitTestingPoSMain {
 	@Test
 	void testLoadProductData() {
 		ArrayList<Product> productsList = new ArrayList<Product>();
-		productsList = mainController.loadProductData("testing/readonly/mockProducts.csv");
+		productsList = mainController.loadProductData("testData/readonly/mockProducts.csv");
 		assertEquals("apple", productsList.get(0).getName());
 		assertEquals("null", productsList.get(0).getBrand());
 		assertEquals(3, productsList.size());
@@ -68,13 +68,13 @@ class UnitTestingPoSMain {
 	@Test
 	void testLoadProductDataNonExist() {
 		ArrayList<Product> productsList = new ArrayList<Product>();
-		productsList = mainController.loadProductData("testing/readonly/noExist/mockProducts.csv");
+		productsList = mainController.loadProductData("testData/readonly/noExist/mockProducts.csv");
 		assertEquals(0, productsList.size());
 	}
 	@Test
 	void testLoadProductDataEmpty() {
 		ArrayList<Product> productsList = new ArrayList<Product>();
-		productsList = mainController.loadProductData("testing/readonly/empty.csv");
+		productsList = mainController.loadProductData("testData/readonly/empty.csv");
 		assertEquals(0, productsList.size());
 	}
 
