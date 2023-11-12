@@ -17,7 +17,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 
 public class DashboardController implements Initializable {
-	private PoS_Main mainController;
+	private MainFrameController mainController;
 	@FXML
 	private BarChart<String, Number> bar1;
 	@FXML
@@ -29,7 +29,7 @@ public class DashboardController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
-	public void setMainController(PoS_Main controller) {
+	public void setMainController(MainFrameController controller) {
 		mainController = controller;
 	}
 
@@ -37,8 +37,8 @@ public class DashboardController implements Initializable {
 	 * Clear the existing data in each chart and reload the order data.
 	 */
 	public void refreshChart() {
-		pie1.getData().clear();
 		bar1.getData().clear();
+		pie1.getData().clear();
 		line1.getData().clear();
 		showBarChart();
 		showPieChart();

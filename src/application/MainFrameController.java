@@ -11,18 +11,14 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
-public class PoS_Main extends Application implements Initializable {
+public class MainFrameController implements Initializable {
 	@FXML
 	private AnchorPane subpage;
 	@FXML
@@ -31,9 +27,10 @@ public class PoS_Main extends Application implements Initializable {
 	private DashboardController dashCon;
 	private InventoryController inveCon;
 	private ProductController prodCon;
-	//↑ these controller fields only necessary if the main controller need to operate the component in the sub page.
+	// ↑ these controller fields only necessary if the main controller need to
+	// operate the component in the sub page.
 	private Text currentTab;
-	//↑ an indicator used for resetting the color of the current tab
+	// ↑ an indicator used for resetting the color of the current tab
 	private Database csvBase;
 	private ArrayList<Product> productsList = new ArrayList<Product>();
 	private ArrayList<Inventory> inventoryList = new ArrayList<Inventory>();
@@ -67,23 +64,10 @@ public class PoS_Main extends Application implements Initializable {
 		switchToDashboard();
 	}
 
-	@Override
-	public void start(Stage primaryStage) {
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("main_frame.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setTitle("PoS System");
-			primaryStage.getIcons().add(new Image("img/point-of-service.png"));
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	@FXML
 	private void switchToDashboard() {
+		orderList.clear();
+		orderList = loadOrderData("data/db_orders.csv");
 		dashCon.refreshChart();
 		subpage.getChildren().clear();
 		subpage.getChildren().add(sceneDash);
@@ -201,9 +185,5 @@ public class PoS_Main extends Application implements Initializable {
 
 	public void setOrderList(ArrayList<Order> orderList) {
 		this.orderList = orderList;
-	}
-
-	public static void main(String[] args) {
-		launch(args);
 	}
 }

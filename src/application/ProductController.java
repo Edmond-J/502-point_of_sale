@@ -32,7 +32,7 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 
 public class ProductController implements Initializable {
-	private PoS_Main mainController;
+	private MainFrameController mainController;
 	private ObservableList<Product> productOBList;
 	@FXML
 	private TextField search_box;
@@ -51,7 +51,7 @@ public class ProductController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
-	public void setMainController(PoS_Main controller) {
+	public void setMainController(MainFrameController controller) {
 		mainController = controller;
 		updateTableView(mainController.getProductsList());
 	}
@@ -235,6 +235,7 @@ public class ProductController implements Initializable {
 			}
 			productOBList.clear();
 			updateTableView(searchResult);
+			setPopupMessage(searchResult.size()+" results found");
 		} else updateTableView(mainController.getProductsList());
 	}
 }

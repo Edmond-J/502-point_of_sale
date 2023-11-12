@@ -19,7 +19,7 @@ import application.*;
  * 
  */
 class UnitTestingPoSMain {
-	PoS_Main mainController;
+	MainFrameController mainController;
 	Database database;
 
 	/**
@@ -27,7 +27,7 @@ class UnitTestingPoSMain {
 	 */
 	@BeforeEach
 	void setUp() throws Exception {
-		mainController = new PoS_Main();
+		mainController = new MainFrameController();
 		database = new Database("testData/DataBaseTesting/");
 	}
 
