@@ -6,9 +6,11 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -24,11 +26,19 @@ public class AddSKUController implements Initializable {
 	private ComboBox<String> unit, category;
 	@FXML
 	private TextArea description, error;
+	@FXML
+	private Button cancel_add_product, apply_add_product;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		unit.getItems().addAll("BAG", "BOX", "KG", "PCS", "TRAY");
 		category.getItems().addAll("Fruits", "Vegetables", "Groceries");
+//		apply_add_product.setDefaultButton(true);//可以在scenebuilder里勾选
+		cancel_add_product.setOnKeyPressed(e -> {
+			if (e.getCode() == KeyCode.ESCAPE) {
+				closeDialog();
+			}
+		});
 	}
 
 	public void addProduct(ArrayList<Product> productsList) {
@@ -119,7 +129,7 @@ public class AddSKUController implements Initializable {
 			price_title.setStyle("-fx-fill: red;");
 			valid = false;
 			error.appendText("error: 'price' is mandatory fields\n");
-		} else if (!price.getText().matches("[0-9](.?)[0-9]*")) {// regular expression
+		} else if (!price.getText().matches("\\d+(.?)\\d+") && !price.getText().matches("\\d")) {// regular expression
 			price_title.setStyle("-fx-fill: red;");
 			valid = false;
 			error.appendText("error: only number and '.' are allowed in 'price'\n");

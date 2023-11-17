@@ -70,6 +70,7 @@ public class ProductController implements Initializable {
 			subStage.setResizable(false);
 			subStage.show();
 			Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
+//			applyBtn.setDefaultButton(true);
 			applyBtn.setOnMouseClicked(e -> {
 				subController.addProduct(mainController.getProductsList());
 				updateTableView(mainController.getProductsList());
