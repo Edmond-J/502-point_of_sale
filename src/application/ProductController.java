@@ -13,6 +13,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -71,14 +73,17 @@ public class ProductController implements Initializable {
 			subStage.show();
 			Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
 //			applyBtn.setDefaultButton(true);
-			applyBtn.setOnMouseClicked(e -> {
-				subController.addProduct(mainController.getProductsList());
-				updateTableView(mainController.getProductsList());
+//			applyBtn.setOnMouseClicked(e -> {
+//				subController.addProduct(mainController.getProductsList());
+//				updateTableView(mainController.getProductsList());
+//			});
+			applyBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					subController.addProduct(mainController.getProductsList());
+					updateTableView(mainController.getProductsList());
+				}
 			});
-			// Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
-			// cancelBtn.setOnMouseClicked(e -> {
-			// subStage.close();
-			// });
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -99,7 +104,7 @@ public class ProductController implements Initializable {
 			TextField fileAddress = (TextField)importDialog.lookup("#file_address");
 //		System.out.println(fileAddress.toString());
 			Button browseBtn = (Button)importDialog.lookup("#browse_import");
-			browseBtn.setOnMouseClicked(e -> {
+			browseBtn.setOnAction(e -> {
 				FileChooser fileChooser = new FileChooser();
 				fileChooser.setTitle("Open File");
 				fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"),
@@ -111,15 +116,15 @@ public class ProductController implements Initializable {
 					fileAddress.setText(selectedFile.getPath());
 			});
 			Button applyBtn = (Button)importDialog.lookup("#apply_import");
-			applyBtn.setOnMouseClicked(e -> {
+			applyBtn.setOnAction(e -> {
 				if (!fileAddress.getText().isEmpty()) {
 					loadSKUFromFile(fileAddress.getText());
 					updateTableView(mainController.getProductsList());
 					subStage.close();
-				}
+				}else setPopupMessage("no file selected");
 			});
 			Button cancelBtn = (Button)importDialog.lookup("#cancel_import");
-			cancelBtn.setOnMouseClicked(e -> {
+			cancelBtn.setOnAction(e -> {
 				subStage.close();
 			});
 		} catch (IOException e) {

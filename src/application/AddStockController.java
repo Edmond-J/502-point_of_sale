@@ -33,14 +33,15 @@ public class AddStockController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		supplier.getItems().add("supplier1");
 //		apply_add_stock.setDefaultButton(true);
-		cancel_add_stock.setOnKeyPressed(e -> {
-			if (e.getCode() == KeyCode.ESCAPE) {
-				closeDialog();
-			}
-		});
+//		cancel_add_stock.setOnKeyPressed(e -> {
+//			if (e.getCode() == KeyCode.ESCAPE) {
+//				closeDialog();
+//			}
+//		});
 	}
 
 	public void addStock(ArrayList<Inventory> inventoryList) {
+		System.out.println("apply pressed");
 	}
 
 	@FXML

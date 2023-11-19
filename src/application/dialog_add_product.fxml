@@ -9,8 +9,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #454d66;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddSKUController">
    <children>
-      <Button fx:id="apply_add_product" defaultButton="true" layoutX="407.0" layoutY="447.0" mnemonicParsing="false" text="Apply" />
-      <Button fx:id="cancel_add_product" cancelButton="true" layoutX="298.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#closeDialog" text="Cancel" />
       <Text fx:id="name_title" fill="WHITE" layoutX="48.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name*" />
       <TextField fx:id="name" layoutX="48.0" layoutY="74.0" />
       <Text fx:id="code_title" fill="WHITE" layoutX="290.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Code" />
@@ -25,6 +23,8 @@
       <ComboBox fx:id="category" layoutX="292.0" layoutY="197.0" prefHeight="23.0" prefWidth="161.0" />
       <Text fill="WHITE" layoutX="46.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Description" />
       <TextArea fx:id="description" focusTraversable="false" layoutX="46.0" layoutY="276.0" prefHeight="54.0" prefWidth="408.0" styleClass="transparent" />
+      <Button fx:id="apply_add_product" defaultButton="true" layoutX="407.0" layoutY="447.0" mnemonicParsing="false" text="Apply" />
+      <Button fx:id="cancel_add_product" cancelButton="true" layoutX="298.0" layoutY="447.0" mnemonicParsing="false" onAction="#closeDialog" text="Cancel" />
       <TextArea fx:id="error" editable="false" focusTraversable="false" layoutX="46.0" layoutY="338.0" prefHeight="147.0" prefWidth="249.0" style="-fx-background-color: #454d66; -fx-border-color: #454d66;" styleClass="transparent" wrapText="true" />
    </children>
 </AnchorPane>

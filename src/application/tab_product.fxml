@@ -17,7 +17,7 @@
 <AnchorPane maxHeight="1080.0" maxWidth="1920.0" minHeight="400.0" minWidth="640.0" prefHeight="730.0" prefWidth="995.0" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ProductController">
    <children>
       <Line endX="1030.0" layoutX="-68.0" layoutY="94.0" opacity="0.2" startX="100.0" AnchorPane.leftAnchor="31.5" AnchorPane.rightAnchor="32.5" />
-      <Button layoutX="155.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showImportFileDialog" prefWidth="90.0" text="Import SKU">
+      <Button layoutX="155.0" layoutY="31.0" mnemonicParsing="false" onAction="#showImportFileDialog" prefWidth="90.0" text="Import SKU">
          <effect>
             <DropShadow offsetY="3.0">
                <color>
@@ -25,7 +25,7 @@
                </color>
             </DropShadow>
          </effect></Button>
-      <Button layoutX="32.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#showAddProductDialog" prefWidth="90.0" text="+ New SKU">
+      <Button layoutX="32.0" layoutY="31.0" mnemonicParsing="false" onAction="#showAddProductDialog" prefWidth="90.0" text="+ New SKU">
          <effect>
             <DropShadow offsetY="3.0">
                <color>
@@ -48,7 +48,7 @@
       </TableView>
       <Pane layoutX="679.0" layoutY="94.0" prefHeight="54.0" prefWidth="284.0" style="-fx-background-color: lightgray;" AnchorPane.rightAnchor="32.0">
          <children>
-            <Button layoutX="221.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#searchProduct" stylesheets="@application.css" text="Search" />
+            <Button layoutX="221.0" layoutY="12.0" mnemonicParsing="false" onAction="#searchProduct" stylesheets="@application.css" text="Search" />
             <TextField fx:id="search_box" layoutX="31.0" layoutY="12.0" prefHeight="30.0" prefWidth="173.0" promptText="search by name" style="-fx-background-color: white; -fx-text-fill: #454d66; -fx-border-color: white;" />
          </children>
       </Pane>
@@ -65,7 +65,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="552.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#deleteProduct" styleClass="button-round">
+      <Button layoutX="552.0" layoutY="101.0" mnemonicParsing="false" onAction="#deleteProduct" styleClass="button-round">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" onMouseClicked="#deleteProduct" opacity="0.6" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -83,7 +83,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="448.0" layoutY="101.0" mnemonicParsing="false" onMouseClicked="#syncDatabase" styleClass="button-round">
+      <Button layoutX="448.0" layoutY="101.0" mnemonicParsing="false" onAction="#syncDatabase" styleClass="button-round">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.6" pickOnBounds="true" preserveRatio="true">
                <image>

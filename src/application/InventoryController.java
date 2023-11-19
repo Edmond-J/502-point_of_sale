@@ -34,11 +34,11 @@ public class InventoryController implements Initializable {
 			subStage.setScene(new Scene(addstockDialog));
 			subStage.setResizable(false);
 			subStage.show();
-//			AddStockController subController = loader.getController();
-//			Button applyBtn = (Button)addstockDialog.lookup("#apply_add_stock");
-//			applyBtn.setOnMouseClicked(e -> {
-//				subController.addStock(mainController.getInventoryList());
-//			});
+			AddStockController subController = loader.getController();
+			Button applyBtn = (Button)addstockDialog.lookup("#apply_add_stock");
+			applyBtn.setOnAction(e -> {
+				subController.addStock(mainController.getInventoryList());
+			});
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

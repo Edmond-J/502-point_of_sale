@@ -34,11 +34,11 @@ public class AddSKUController implements Initializable {
 		unit.getItems().addAll("BAG", "BOX", "KG", "PCS", "TRAY");
 		category.getItems().addAll("Fruits", "Vegetables", "Groceries");
 //		apply_add_product.setDefaultButton(true);//可以在scenebuilder里勾选
-		cancel_add_product.setOnKeyPressed(e -> {
-			if (e.getCode() == KeyCode.ESCAPE) {
-				closeDialog();
-			}
-		});
+//		cancel_add_product.setOnKeyPressed(e -> {
+//			if (e.getCode() == KeyCode.ESCAPE) {
+//				closeDialog();
+//			}
+//		});
 	}
 
 	public void addProduct(ArrayList<Product> productsList) {
