@@ -18,7 +18,7 @@ public class POSLauncher extends Application  {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("PoS System");
-			primaryStage.getIcons().add(new Image("img/point-of-service.png"));
+			primaryStage.getIcons().add(new Image("img/icon.png"));
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
