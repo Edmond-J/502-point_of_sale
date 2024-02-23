@@ -14,7 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class InventoryController implements Initializable {
-	PoS_Main mainController;
+	private MainFrameController mainController;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -36,7 +36,7 @@ public class InventoryController implements Initializable {
 			subStage.show();
 			AddStockController subController = loader.getController();
 			Button applyBtn = (Button)addstockDialog.lookup("#apply_add_stock");
-			applyBtn.setOnMouseClicked(e -> {
+			applyBtn.setOnAction(e -> {
 				subController.addStock(mainController.getInventoryList());
 			});
 		} catch (IOException e) {
@@ -44,7 +44,7 @@ public class InventoryController implements Initializable {
 		}
 	}
 
-	public void setMainController(PoS_Main controller) {
+	public void setMainController(MainFrameController controller) {
 		mainController = controller;
 	}
 }

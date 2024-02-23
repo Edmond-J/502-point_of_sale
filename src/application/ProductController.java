@@ -13,6 +13,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -32,12 +34,12 @@ import javafx.stage.Window;
 import javafx.util.Duration;
 
 public class ProductController implements Initializable {
-	private PoS_Main mainController;
+	private MainFrameController mainController;
 	private ObservableList<Product> productOBList;
 	@FXML
 	private TextField search_box;
 	@FXML
-	private Text import_result;
+	private Text io_message;
 	@FXML
 	private TableView<Product> productsTableView;
 	@FXML
@@ -49,10 +51,9 @@ public class ProductController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		supplierList.add(new Supplier(100, "Green NZ", "14 karori road wellington", 270852547, "greennz@gmail.com"));
 	}
 
-	public void setMainController(PoS_Main controller) {
+	public void setMainController(MainFrameController controller) {
 		mainController = controller;
 		updateTableView(mainController.getProductsList());
 	}
@@ -71,14 +72,18 @@ public class ProductController implements Initializable {
 			subStage.setResizable(false);
 			subStage.show();
 			Button applyBtn = (Button)addProductDialog.lookup("#apply_add_product");
-			applyBtn.setOnMouseClicked(e -> {
-				subController.addProduct(mainController.getProductsList());
-				updateTableView(mainController.getProductsList());
+//			applyBtn.setDefaultButton(true);
+//			applyBtn.setOnMouseClicked(e -> {
+//				subController.addProduct(mainController.getProductsList());
+//				updateTableView(mainController.getProductsList());
+//			});
+			applyBtn.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					subController.addProduct(mainController.getProductsList());
+					updateTableView(mainController.getProductsList());
+				}
 			});
-			// Button cancelBtn = (Button)addProductDialog.lookup("#cancel_add_product");
-			// cancelBtn.setOnMouseClicked(e -> {
-			// subStage.close();
-			// });
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -99,7 +104,7 @@ public class ProductController implements Initializable {
 			TextField fileAddress = (TextField)importDialog.lookup("#file_address");
 //		System.out.println(fileAddress.toString());
 			Button browseBtn = (Button)importDialog.lookup("#browse_import");
-			browseBtn.setOnMouseClicked(e -> {
+			browseBtn.setOnAction(e -> {
 				FileChooser fileChooser = new FileChooser();
 				fileChooser.setTitle("Open File");
 				fileChooser.getExtensionFilters().addAll(new ExtensionFilter("CSV Files", "*.csv"),
@@ -111,15 +116,15 @@ public class ProductController implements Initializable {
 					fileAddress.setText(selectedFile.getPath());
 			});
 			Button applyBtn = (Button)importDialog.lookup("#apply_import");
-			applyBtn.setOnMouseClicked(e -> {
+			applyBtn.setOnAction(e -> {
 				if (!fileAddress.getText().isEmpty()) {
 					loadSKUFromFile(fileAddress.getText());
 					updateTableView(mainController.getProductsList());
 					subStage.close();
-				}
+				}else setPopupMessage("no file selected");
 			});
 			Button cancelBtn = (Button)importDialog.lookup("#cancel_import");
-			cancelBtn.setOnMouseClicked(e -> {
+			cancelBtn.setOnAction(e -> {
 				subStage.close();
 			});
 		} catch (IOException e) {
@@ -183,9 +188,9 @@ public class ProductController implements Initializable {
 	}
 
 	public void setPopupMessage(String message) {
-		import_result.setText(message);
+		io_message.setText(message);
 //		System.out.println(imported+" SKU imported. "+duplicate+" SKU duplicated.");
-		FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), import_result);
+		FadeTransition fadeOut = new FadeTransition(Duration.seconds(5), io_message);
 		fadeOut.setFromValue(1.0);
 		fadeOut.setToValue(0.0);
 		fadeOut.play();
@@ -236,6 +241,7 @@ public class ProductController implements Initializable {
 			}
 			productOBList.clear();
 			updateTableView(searchResult);
+			setPopupMessage(searchResult.size()+" results found");
 		} else updateTableView(mainController.getProductsList());
 	}
 }

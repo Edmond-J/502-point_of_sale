@@ -11,24 +11,24 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #454d66;" stylesheets="@application.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddStockController">
    <children>
       <Text fill="WHITE" layoutX="48.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name*" />
-      <Text fill="WHITE" layoutX="292.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bar Code*" />
-      <Text fill="WHITE" layoutX="48.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Description" />
-      <TextArea fx:id="description" layoutX="48.0" layoutY="339.0" prefHeight="54.0" prefWidth="420.0" styleClass="transparent" />
-      <Text fill="WHITE" layoutX="48.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase Price*" />
-      <Text fill="WHITE" layoutX="48.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp Date" />
-      <Button fx:id="apply_add_stock" layoutX="407.0" layoutY="447.0" mnemonicParsing="false" text="Apply" />
-      <Button fx:id="cancel_add_product" layoutX="298.0" layoutY="447.0" mnemonicParsing="false" onMouseClicked="#closeDialog" text="Cancel" />
-      <Text fill="WHITE" layoutX="48.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand" />
-      <Text fill="WHITE" layoutX="295.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier" />
-      <DatePicker fx:id="exp_date" layoutX="49.0" layoutY="269.0" prefHeight="23.0" prefWidth="160.0" />
       <TextField fx:id="name" layoutX="48.0" layoutY="74.0" prefHeight="23.0" prefWidth="161.0" />
+      <Text fill="WHITE" layoutX="292.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bar Code*" />
       <TextField fx:id="code" layoutX="291.0" layoutY="74.0" prefHeight="23.0" prefWidth="161.0" />
-      <TextField fx:id="brand" layoutX="48.0" layoutY="204.0" />
+      <Text fill="WHITE" layoutX="48.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchase Price*" />
       <TextField fx:id="price" layoutX="48.0" layoutY="134.0" prefHeight="23.0" prefWidth="161.0" />
-      <ComboBox fx:id="supplier" layoutX="295.0" layoutY="204.0" prefHeight="23.0" prefWidth="160.0" />
       <Text fill="WHITE" layoutX="291.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weight*" />
       <TextField fx:id="weight" layoutX="291.0" layoutY="135.0" prefHeight="23.0" prefWidth="161.0" />
+      <Text fill="WHITE" layoutX="48.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Brand" />
+      <TextField fx:id="brand" layoutX="48.0" layoutY="204.0" />
+      <Text fill="WHITE" layoutX="295.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Supplier" />
+      <ComboBox fx:id="supplier" layoutX="295.0" layoutY="204.0" prefHeight="23.0" prefWidth="160.0" />
+      <Text fill="WHITE" layoutX="48.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Exp Date" />
+      <DatePicker fx:id="exp_date" layoutX="49.0" layoutY="269.0" prefHeight="23.0" prefWidth="160.0" />
       <Text fill="WHITE" layoutX="295.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" />
       <TextField fx:id="brand1" layoutX="295.0" layoutY="270.0" />
+      <Text fill="WHITE" layoutX="48.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Description" />
+      <TextArea fx:id="description" focusTraversable="false" layoutX="48.0" layoutY="339.0" prefHeight="54.0" prefWidth="420.0" styleClass="transparent" />
+      <Button fx:id="apply_add_stock" defaultButton="true" layoutX="407.0" layoutY="447.0" mnemonicParsing="false" text="Apply" />
+      <Button fx:id="cancel_add_stock" cancelButton="true" layoutX="298.0" layoutY="447.0" mnemonicParsing="false" onAction="#closeDialog" text="Cancel" />
    </children>
 </AnchorPane>
