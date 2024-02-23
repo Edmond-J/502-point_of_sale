@@ -3,7 +3,7 @@
 This is a team project aimed at developing a POS (Point of Sale) system while learning about software development lifecycle and testing. I contributed 95% of the code in the system, hence I am primarily responsible for maintaining the code repository. The DashBoard, Inventory, and Product subpages have been completed, while the rest are pending. The target users of this software are administrative personnel who manage backend data, such as store owners and managers. A significant amount of CSS code was used in this project for interface beautification.
 
 Find the executable application (point_of_sale.exe) from Google Drive:  
-[Edmond's Java Program Collection.zip (Windows)](https://drive.google.com/file/d/1ve7sEscvtVldRKZU-B3VhaQdORteksQk/view?usp=drive_link)
+[Edmond's Java Program Collection.zip (Windows)](https://drive.google.com/drive/folders/1ovLlyHeENMtQDsT5b9hJBcHwKPCrC6Mg?usp=sharing)
 
 ## Snapshot
 <img src="screenshot/ui-1.png" width="1280"> 
